@@ -1,0 +1,41 @@
+{
+  "home-page": {
+    "title": ["Home"]
+  },
+  "profile-page": {
+    "title": ["Profile"]
+  },
+  "findmatch-page": {
+    "title": ["Find Match"]
+  },
+  "mymatches-page": {
+    "title": ["My Matches"]
+  },
+  "history-page": {
+    "title": ["History"]
+  },
+  "messages-page": {
+    "title": ["Messages"]
+  },
+  "login-page": {
+    "title": ["Sign In"],
+    "name-text": ["Name (First, Last)"],
+    "username-text": ["Username"],
+    "password-text": ["Password (Min. 8 characters)"]
+  },
+  "signup-page": {
+    "confirm-password-text": ["Confirm Password (Min. 8 characters)"],
+    "password-text": ["Password (Min. 8 characters)"]
+  },
+
+  "buttons": {
+    "next": ["Next"],
+    "back": ["Back"],
+    "start": ["Start"],
+    "signin": ["Sign In"],
+    "logout": ["Logout"]
+  },
+  "date-format": ["MMM D, YYYY"],
+  "time-format": ["h:mm a"],
+  "elapsed-units": ["hours"]
+}
