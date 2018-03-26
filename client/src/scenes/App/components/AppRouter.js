@@ -7,6 +7,7 @@ import FindMatchPage from 'scenes/FindMatch';
 import MyMatchesPage from 'scenes/MyMatches';
 import HistoryPage from 'scenes/History';
 import MessagesPage from 'scenes/Messages';
+import CashierPage from 'scenes/Cashier';
 import LoginPage from 'scenes/Login'
 import SignupPage from 'scenes/Signup';
 import ResetPage from 'scenes/Reset';
@@ -37,6 +38,7 @@ class MainLayout extends Component {
         <PrivateRoute path='/mymatches' component={MyMatchesPage} />
         <PrivateRoute path='/messages' component={MessagesPage} />
         <PrivateRoute path='/history' component={HistoryPage} />
+        <PrivateRoute path='/cashier' component={CashierPage} />
         <Route path='/login' component={LoginPage} />
         <Route path='/signup' component={SignupPage} />
         <Route path='/reset' component={ResetPage} />

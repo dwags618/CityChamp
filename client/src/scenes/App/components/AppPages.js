@@ -4,6 +4,7 @@ import SearchIcon from 'material-ui-icons/Search';
 import FolderOpenIcon from 'material-ui-icons/FolderOpen';
 import MessageIcon from 'material-ui-icons/Message';
 import HistoryIcon from 'material-ui-icons/History';
+import AttachMoneyIcon from 'material-ui-icons/AttachMoney';
 
 const AppPages = [
   {
@@ -35,6 +36,11 @@ const AppPages = [
     pathname: '/history',
     title: 'history-page.title',
     icon: HistoryIcon
+  },
+  {
+    pathname: '/cashier',
+    title: 'cashier-page.title',
+    icon: AttachMoneyIcon
   }
 ];
 

@@ -17,6 +17,9 @@
   "messages-page": {
     "title": ["Messages"]
   },
+  "cashier-page": {
+    "title": ["Cashier"]
+  },
   "login-page": {
     "title": ["Sign In"],
     "name-text": ["Name (First, Last)"],
