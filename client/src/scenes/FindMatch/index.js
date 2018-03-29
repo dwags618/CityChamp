@@ -5,13 +5,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from 'redux/navigation';
 import GoogleMapReact from 'google-map-react'
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 const AnyReactComponent = ({ text }) => <div>{ text }</div>;
 
 
 class FindMatchPage extends Component {
-  componentDidMount() {
-    this.props.setTitle(this.props.translate('findmatch-page.title'));
-  }
+  
 
  static defaultProps = {
     center: {
@@ -25,20 +24,16 @@ class FindMatchPage extends Component {
     const { translate } = this.props;
 
     return (
-     // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak' }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-        >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text={'Kreyser Avrora'}
-          />
-        </GoogleMapReact>
-      </div>
+     <Map google={this.props.google} zoom={14}>
+ 
+        <Marker onClick={this.onMarkerClick}
+                name={'Current location'} />
+ 
+        <InfoWindow onClose={this.onInfoWindowClose}>
+            <div>
+            </div>
+        </InfoWindow>
+      </Map>
     );
   }
 }
@@ -58,7 +53,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FindMatchPage));
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak'
+})(FindMatchPage)
+
