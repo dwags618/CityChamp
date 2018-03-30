@@ -14,17 +14,32 @@ class FindMatchPage extends Component {
 
  static defaultProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33
+      lat: 41.906,
+      lng: -87.63
     },
     zoom: 11
   };
+
+login = () => {
+    
+  }
+
 
   render() {
     const { translate } = this.props;
 
     return (
-     <Map google={this.props.google} zoom={14}>
+    <div>
+    <input type="text" id="inputTextAddress" style={{width:'200px'}} title="Address to Geocode">
+    </input>
+    <input type="button" onclick="this.codeAddress" id="inputButtonGeocode" style={{width:'150px'}} title="Search" value="Search">
+    </input>
+    <div style={{paddingLeft: '150px'}}>
+
+     <Map google={this.props.google}  initialCenter={{
+            lat: 41.906,
+            lng: -87.63
+          }} style={{ width: '500px', height: '500px'}} zoom={14}>
  
         <Marker onClick={this.onMarkerClick}
                 name={'Current location'} />
@@ -34,6 +49,8 @@ class FindMatchPage extends Component {
             </div>
         </InfoWindow>
       </Map>
+      </div>
+      </div>
     );
   }
 }
