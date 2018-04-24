@@ -9,7 +9,7 @@ import { reducer as form } from 'redux-form/immutable';
 import { Provider } from 'react-redux';
 import { initialize, addTranslation, localeReducer as locale } from 'react-localize-redux';
 import navigation from './redux/navigation';
-import App from 'scenes/App';
+import App from './scenes/App';
 
 const rootReducer = combineReducers({
   'navigation': navigation,

@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import AppFrame from './AppFrame';
-import HomePage from 'scenes/Home';
-import ProfilePage from 'scenes/Profile';
-import FindMatchPage from 'scenes/FindMatch';
-import MyMatchesPage from 'scenes/MyMatches';
-import HistoryPage from 'scenes/History';
-import MessagesPage from 'scenes/Messages';
-import CashierPage from 'scenes/Cashier';
-import LoginPage from 'scenes/Login'
-import SignupPage from 'scenes/Signup';
-import ResetPage from 'scenes/Reset';
-import Auth from 'services/auth';
+import HomePage from '../../../scenes/Home';
+import ProfilePage from '../../../scenes/Profile';
+import FindMatchPage from '../../../scenes/FindMatch';
+import MyMatchesPage from '../../../scenes/MyMatches';
+import HistoryPage from '../../../scenes/History';
+import MessagesPage from '../../../scenes/Messages';
+import CashierPage from '../../../scenes/Cashier';
+import LoginPage from '../../../scenes/Login'
+import SignupPage from '../../../scenes/Signup';
+import ResetPage from '../../../scenes/Reset';
+import Auth from '../../../services/auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (

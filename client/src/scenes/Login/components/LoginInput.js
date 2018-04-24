@@ -7,7 +7,7 @@ import { FormHelperText } from 'material-ui/Form';
 const styles = (theme) => ({
   container: {
     padding:'10px 0',
-    width:'100%'
+    width:'100%',
   },
   helperText: {
     color: 'white',

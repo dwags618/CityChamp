@@ -3,7 +3,7 @@ import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import Typography from 'material-ui/Typography';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { setTitle } from 'redux/navigation';
+import { setTitle } from '../../redux/navigation';
 
 class FindMatchPage extends Component {
   componentDidMount() {

@@ -3,7 +3,7 @@ import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
-import { setTitle } from 'redux/navigation';
+import { setTitle } from '../../redux/navigation';
 
 const styles = {
   page: {

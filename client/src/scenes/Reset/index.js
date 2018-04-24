@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { setTitle } from 'redux/navigation';
+import { setTitle } from '../../redux/navigation';
 import ResetForm from './components/ResetForm';
-import MyCityChampLogo from 'images/MCC_logo.png';
+import MyCityChampLogo from '../../images/MCC_logo.png';
 import { withStyles } from 'material-ui/styles';
-import {resetUser} from 'services/api/auth';
+import {resetUser} from '../../services/api/auth';
 
 const styles = theme => ({
   container: {
     background:'linear-gradient(0deg, #1f5592 0%,#286ba1 37%,#3a94c0 68%,#51c4e1 100%)',
-    height: '100vh'
+    width: '100%',
+    height: 1300
   },
   logo: {
     display: 'block',

@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
 import List, { ListItem } from 'material-ui/List';
 import AppDrawerItem from './AppDrawerItem';
-import Logo from 'images/MCC_logo.png';
+import Logo from '../../../images/MCC_logo.png';
 import AppPages from './AppPages';
 
 const styles = theme => ({

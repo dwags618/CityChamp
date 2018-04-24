@@ -11,8 +11,8 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import AppDrawer from './AppDrawer';
 import AppContent from './AppContent';
-import { title } from 'config/appSettings.json';
-import Auth from 'services/auth';
+import { title } from '../../../config/appSettings.json';
+import Auth from '../../../services/auth';
 
 const styles = theme => ({
   '@global': {

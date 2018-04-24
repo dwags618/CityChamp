@@ -4,6 +4,7 @@ import Typography from 'material-ui/Typography';
 import LoginInput from './LoginInput';
 import SignInButton from './SignInButton';
 import { Link } from 'react-router-dom';
+import FacebookLogin from 'react-facebook-login';
 
 const styles = theme => ({
   buttonLink: {
@@ -28,12 +29,15 @@ const styles = theme => ({
     flexDirection: 'column',
     width: 450,
     margin: '0 auto',
+    height: 900
   }
 });
 
 let LoginForm = (props) => {
   const { classes, translate, onChange, onSubmit, user, errors, message } = props;
-
+const responseFacebook = (response) => {
+  console.log(response);
+}
   return (
     <div>
       <form
@@ -71,11 +75,19 @@ let LoginForm = (props) => {
           New User
         </Link>
         </div>
+        <div>
           <SignInButton
             onClick={onSubmit}
             buttonText={translate('buttons.signin')}
           />
-        </div>
+          <FacebookLogin
+    appId="1088597931155576"
+    autoLoad={true}
+    fields="name,email,picture"
+    callback={responseFacebook} />
+    </div>
+      </div>
+        
       </form>
       
         
