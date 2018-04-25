@@ -10,7 +10,6 @@ import { withStyles } from 'material-ui/styles';
 import {geolocated} from 'react-geolocated';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 
-const AnyReactComponent = ({ text }) => <div>{ text }</div>;
 
 const styles = theme => ({
   input: {
