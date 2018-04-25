@@ -8,11 +8,12 @@ import GoogleMapReact from 'google-map-react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import { withStyles } from 'material-ui/styles';
 import {geolocated} from 'react-geolocated';
+import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 
 const AnyReactComponent = ({ text }) => <div>{ text }</div>;
 
 const styles = theme => ({
-  zipcode: {
+  input: {
     borderRadius: 25,
     borderWidth: 2,
     borderColor: '#51c4e1',
@@ -29,11 +30,22 @@ const styles = theme => ({
     height: 45,
     color: 'white'
   },
+  filter: {
+    position:'relative', 
+    marginTop: 20, 
+    marginLeft: -100, 
+  },
   map: {
     position:'relative', 
     marginTop: 20, 
-    marginLeft: 250, 
-    width: 350, 
+    marginLeft: 75, 
+    width: 750, 
+    height: 500
+  },
+  table: {
+    position:'relative', 
+    marginTop: 20, 
+    width: 900, 
     height: 350
   }
 })
@@ -52,18 +64,26 @@ login = () => {
     
   }
 
+  
+
 
   render() {
     const { translate, classes, coords } = this.props;
 
     return (
     <div style={{position: 'absolute', height: '100%', width: '100%'}}>
-    <input type="text" className={classes.zipcode} placeholder={"Zip Code"}>
+    <div className={classes.filter}>
+    <input type="text" className={classes.input} placeholder={"Zip Code"}>
     </input>
-    <input type="text" className={classes.zipcode} placeholder={"Zip Code"}>
+    <input type="text" className={classes.input} placeholder={"Radius"}>
+    </input>
+    <input type="text" className={classes.input} placeholder={"Date"}>
+    </input>
+    <input type="text" className={classes.input} placeholder={"Time"}>
     </input>
     <input type="button" onclick="this.codeAddress" className={classes.search} value="Search">
     </input>
+    </div>
     <div className={classes.map}>
 
      <Map google={this.props.google}  initialCenter={{
@@ -82,6 +102,40 @@ login = () => {
 
       
       </div>
+      <div className={classes.table}>
+      <Table >
+          <TableHead>
+            <TableRow>
+              <TableCell>{'Player'}</TableCell>
+              <TableCell>{'Date'}</TableCell>
+              <TableCell>{'Time'}</TableCell>
+              <TableCell>{'Skill Level'}</TableCell>
+              <TableCell>{'Betting'}</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableRow>
+            <TableCell>{'Dylan'}</TableCell>
+              <TableCell>{'Sunday'}</TableCell>
+              <TableCell>{'Afternoon'}</TableCell>
+              <TableCell>{'Professional'}</TableCell>
+              <TableCell>{'$100'}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>{'Cody'}</TableCell>
+              <TableCell>{'Never'}</TableCell>
+              <TableCell>{'4AM'}</TableCell>
+              <TableCell>{'Beginner'}</TableCell>
+              <TableCell>{'Signed Arsenal Jersey'}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>{'Ben'}</TableCell>
+              <TableCell>{'Monday'}</TableCell>
+              <TableCell>{'Morning'}</TableCell>
+              <TableCell>{'Intermedia'}</TableCell>
+              <TableCell>{'$5'}</TableCell>
+          </TableRow>
+        </Table>
+        </div>
       </div>
     );
   }
@@ -110,7 +164,7 @@ const GeolocatedContainer = geolocated({
 });
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak'
+  apiKey: 'AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak',
 }, mapDispatchToProps, mapStateToProps, GeolocatedContainer)(withStyles(styles)(FindMatchPage))
 
 
