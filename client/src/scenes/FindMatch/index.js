@@ -4,12 +4,10 @@ import Typography from 'material-ui/Typography';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../redux/navigation';
-import GoogleMapReact from 'google-map-react'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import { withStyles } from 'material-ui/styles';
 import {geolocated} from 'react-geolocated';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
-
+import MapForm from './components/MapForm';
 
 const styles = theme => ({
   input: {
@@ -67,7 +65,7 @@ login = () => {
 
 
   render() {
-    const { translate, classes, coords } = this.props;
+    const { translate, classes } = this.props;
 
     return (
     <div style={{position: 'absolute', height: '100%', width: '100%'}}>
@@ -85,19 +83,7 @@ login = () => {
     </div>
     <div className={classes.map}>
 
-     <Map google={this.props.google}  initialCenter={{
-            lat: 41.906,
-            lng: -87.63
-          }} zoom={14}>
- 
-        <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
- 
-        <InfoWindow onClose={this.onInfoWindowClose}>
-            <div>
-            </div>
-        </InfoWindow>
-      </Map>
+     <MapForm/>
 
       
       </div>
@@ -155,15 +141,11 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const GeolocatedContainer = geolocated({
+export default geolocated({
   positionOptions: {
     enableHighAccuracy: false,
   },
   userDecisionTimeout: 5000,
-});
-
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak',
-}, mapDispatchToProps, mapStateToProps, GeolocatedContainer)(withStyles(styles)(FindMatchPage))
+})(withStyles(styles)(FindMatchPage))
 
 
