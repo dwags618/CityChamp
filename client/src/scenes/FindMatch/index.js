@@ -9,6 +9,8 @@ import {geolocated} from 'react-geolocated';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 import MapForm from './components/MapForm';
 
+import Grid from 'material-ui/Grid';
+
 const styles = theme => ({
   input: {
     borderRadius: 25,
@@ -51,6 +53,15 @@ const styles = theme => ({
     marginTop: 20, 
     width: 900, 
     height: 350
+  },
+  contentContainer: {
+    flex: '1 0 auto',
+  },
+  pageContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    margin: '0 auto',
   }
 })
 
@@ -94,24 +105,38 @@ class FindMatchPage extends Component {
     const { translate, classes } = this.props;
 
     return (
-    <div style={{position: 'absolute', height: '100%', width: '100%'}}>
-    <div className={classes.filter}>
+    <div className={classes.pageContainer}>
+        <div className={classes.contentContainer}>
     <form onSubmit={this.handleSubmit} >
-    <input type="text" className={classes.input} placeholder={"Zip Code"}>
-    </input>
-    
-      <select value={this.state.value} onChange={this.handleChange} className={classes.dropdown}>
-        <option value="driving">Driving (5 mi.)</option>
-        <option value="biking">Biking (2 mi.)</option>
-        <option value="walking">Walking (1 mi.)</option>
-        <option value="close">Within 4 blocks</option>
-      </select>
-      <select value={this.state.value} onChange={this.handleChange} className={classes.dropdown}>
-        <option value="driving">Driving (5 mi.)</option>
-        <option value="biking">Biking (2 mi.)</option>
-        <option value="walking">Walking (1 mi.)</option>
-        <option value="close">Within 4 blocks</option>
-      </select>
+
+      <Grid container justify="center">
+        <Grid item>
+          <center>
+            <input type="text" className={classes.input} placeholder={"Zip Code"}>
+            </input>
+          </center>
+        </Grid>
+        <Grid item>
+          <center>
+            <select value={this.state.value} onChange={this.handleChange} className={classes.dropdown}>
+              <option value="driving">Driving (5 mi.)</option>
+              <option value="biking">Biking (2 mi.)</option>
+              <option value="walking">Walking (1 mi.)</option>
+              <option value="close">Within 4 blocks</option>
+            </select>
+          </center>
+        </Grid>
+        <Grid item>
+          <center>
+            <select value={this.state.value} onChange={this.handleChange} className={classes.dropdown}>
+              <option value="driving">Driving (5 mi.)</option>
+              <option value="biking">Biking (2 mi.)</option>
+              <option value="walking">Walking (1 mi.)</option>
+              <option value="close">Within 4 blocks</option>
+            </select>
+          </center>
+        </Grid>
+      </Grid>
     </form>
    
     </div>
