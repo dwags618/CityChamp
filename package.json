@@ -13,6 +13,7 @@
     "jquery": "^3.3.1",
     "react-facebook-login": "^4.0.1",
     "react-router-confirm-navigation": "0.0.0",
-    "react-table": "^6.7.6"
+    "react-table": "^6.7.6",
+    "sqlite3": "^4.0.0"
   }
 }
