@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "jquery": "^3.3.1",
+<<<<<<< HEAD
     "react-facebook-login": "^4.0.1",
+=======
+    "react-payment": "^0.1.8",
+>>>>>>> ca637e0502aef1a579afe3e79e48a5920d1c63a5
     "react-router-confirm-navigation": "0.0.0",
     "react-table": "^6.7.6",
     "sqlite3": "^4.0.0"
