@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import { withStyles } from 'material-ui/styles';
 
-
 const styles = theme => ({
   map: {
     position:'relative', 

@@ -17,7 +17,14 @@ const styles = theme => ({
     padding: 20, 
     width: 200,
     height: 15,
-    marginRight: 20
+    marginRight: 20,
+  },
+  dropdown: {
+    borderRadius: 25,
+    borderWidth: 2,
+    borderColor: '#51c4e1',
+    width: 200,
+    height:45
   },
   search: {
     borderRadius: 25,
@@ -49,6 +56,32 @@ const styles = theme => ({
 
 class FindMatchPage extends Component {
 
+  constructor(props, context) {
+    super(props, context);
+
+    // set the initial component state
+    this.state = {
+        reviews: '',
+      value: ''
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+
+      event.preventDefault();
+
+      
+    }
+
+    handleChange(event) {
+
+      this.setState({value: event.target.value});
+
+    }
+
  static defaultProps = {
     center: {
       lat: 41.906,
@@ -57,29 +90,30 @@ class FindMatchPage extends Component {
     zoom: 11
   };
 
-login = () => {
-    
-  }
-
-  
-
-
   render() {
     const { translate, classes } = this.props;
 
     return (
     <div style={{position: 'absolute', height: '100%', width: '100%'}}>
     <div className={classes.filter}>
+    <form onSubmit={this.handleSubmit} >
     <input type="text" className={classes.input} placeholder={"Zip Code"}>
     </input>
-    <input type="text" className={classes.input} placeholder={"Radius"}>
-    </input>
-    <input type="text" className={classes.input} placeholder={"Date"}>
-    </input>
-    <input type="text" className={classes.input} placeholder={"Time"}>
-    </input>
-    <input type="button" onclick="this.codeAddress" className={classes.search} value="Search">
-    </input>
+    
+      <select value={this.state.value} onChange={this.handleChange} className={classes.dropdown}>
+        <option value="driving">Driving (5 mi.)</option>
+        <option value="biking">Biking (2 mi.)</option>
+        <option value="walking">Walking (1 mi.)</option>
+        <option value="close">Within 4 blocks</option>
+      </select>
+      <select value={this.state.value} onChange={this.handleChange} className={classes.dropdown}>
+        <option value="driving">Driving (5 mi.)</option>
+        <option value="biking">Biking (2 mi.)</option>
+        <option value="walking">Walking (1 mi.)</option>
+        <option value="close">Within 4 blocks</option>
+      </select>
+    </form>
+   
     </div>
     <div className={classes.map}>
 
