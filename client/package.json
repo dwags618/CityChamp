@@ -24,6 +24,7 @@
     "react-csv": "^1.0.13",
     "react-datepicker": "^1.4.1",
     "react-dom": "^16.3.1",
+    "react-dropdown-timepicker": "^1.0.4",
     "react-facebook-login": "^4.0.1",
     "react-geolocated": "^2.3.2",
     "react-localize-redux": "^2.17.5",

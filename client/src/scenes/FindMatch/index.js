@@ -13,6 +13,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Grid from 'material-ui/Grid';
 import moment from 'moment';
+import TimePicker from 'react-dropdown-timepicker';
 
 const styles = theme => ({
   input: {
@@ -149,6 +150,15 @@ class FindMatchPage extends Component {
                   selected={moment(this.state.startDate)}
                   onChange={this.handleChangeStartDate}
                 />
+              </Paper>
+          </center>
+        </Grid>
+        <Grid item>
+          <center>
+            <Paper elevation={4}>
+                <TimePicker
+                  time={this.state.time}
+                  onChange={this.handleTimeChange} />
               </Paper>
           </center>
         </Grid>
