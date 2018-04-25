@@ -8,8 +8,11 @@ import { withStyles } from 'material-ui/styles';
 import {geolocated} from 'react-geolocated';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 import MapForm from './components/MapForm';
-
+import Paper from 'material-ui/Paper';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import Grid from 'material-ui/Grid';
+import moment from 'moment';
 
 const styles = theme => ({
   input: {
@@ -62,7 +65,18 @@ const styles = theme => ({
     flexDirection: 'column',
     height: '100%',
     margin: '0 auto',
-  }
+  },
+  datePicker: {
+    border: 0,
+    padding: 8,
+    borderRadius: 25,
+    borderWidth: 2, 
+    borderColor: '#51c4e1',
+    padding: 20, 
+    width: 200,
+    height: 15,
+    marginRight: 20,
+  },
 })
 
 class FindMatchPage extends Component {
@@ -73,7 +87,8 @@ class FindMatchPage extends Component {
     // set the initial component state
     this.state = {
         reviews: '',
-      value: ''
+      value: '',
+      startDate: moment(),
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -128,12 +143,13 @@ class FindMatchPage extends Component {
         </Grid>
         <Grid item>
           <center>
-            <select value={this.state.value} onChange={this.handleChange} className={classes.dropdown}>
-              <option value="driving">Driving (5 mi.)</option>
-              <option value="biking">Biking (2 mi.)</option>
-              <option value="walking">Walking (1 mi.)</option>
-              <option value="close">Within 4 blocks</option>
-            </select>
+            <Paper elevation={4}>
+                <DatePicker
+                  className={classes.datePicker}
+                  selected={moment(this.state.startDate)}
+                  onChange={this.handleChangeStartDate}
+                />
+              </Paper>
           </center>
         </Grid>
       </Grid>
