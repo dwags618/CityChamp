@@ -21,6 +21,7 @@ class CashierPage extends Component {
   }
 }
 
+
 const mapStateToProps = state => {
   return {
     translate: getTranslate(state.get('locale')),
