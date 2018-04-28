@@ -24,6 +24,7 @@
     "menuitem": "0.0.5",
     "moment": "^2.22.1",
     "payment": "^2.3.0",
+    "prop-types": "^15.6.1",
     "react-csv": "^1.0.13",
     "react-datepicker": "^1.4.1",
     "react-dropdown-timepicker": "^1.0.4",
