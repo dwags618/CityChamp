@@ -10,6 +10,8 @@ class MapsPage extends Component {
 
   constructor(props) {
         super(props);
+
+        
          this.state = { pictures: [] };
          this.onDrop = this.onDrop.bind(this);
   }
@@ -28,13 +30,18 @@ class MapsPage extends Component {
     const { translate } = this.props;
 
     return (
+      <div>
       <ImageUploader
-        withIcon={true}
+        withIcon={false}
+        withPreview={false}
+        label={''}
         buttonText='Choose images'
         onChange={this.onDrop}
         imgExtension={['.jpg', '.gif', '.png', '.gif']}
         maxFileSize={5242880}
       />
+      <img src={this.state.pictures}/>
+      </div>
     );
   }
 }
