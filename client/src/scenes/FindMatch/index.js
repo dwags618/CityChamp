@@ -14,7 +14,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Grid from 'material-ui/Grid';
 import moment from 'moment';
 import InputSlider from 'react-input-slider';
-
+import reactSlider from 'react-slider';
 
 const styles = theme => ({
   input: {
@@ -155,15 +155,11 @@ class FindMatchPage extends Component {
         <Grid item>
           <center>
             <Paper elevation={4}>
-                 <InputSlider
-        className="slider slider-xy"
-        axis="xy"
-        x={this.state.x}
-        xmax={100}
-        y={this.state.y}
-        ymax={100}
-        onChange={this.handleChange}
-      />
+                 <DatePicker
+                  className={classes.datePicker}
+                  selected={moment(this.state.startDate)}
+                  onChange={this.handleChangeStartDate}
+                />
              
               </Paper>
           </center>
@@ -171,15 +167,7 @@ class FindMatchPage extends Component {
         <Grid item>
           <center>
             <Paper elevation={4}>
-                <InputSlider
-        className="slider slider-xy"
-        axis="xy"
-        x={this.state.x}
-        xmax={100}
-        y={this.state.y}
-        ymax={100}
-        onChange={this.handleChange}
-      />
+                <reactSlider defaultValue={[0, 100]} withBars />
               </Paper>
           </center>
         </Grid>
