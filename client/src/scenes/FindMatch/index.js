@@ -13,7 +13,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Grid from 'material-ui/Grid';
 import moment from 'moment';
-import TimePicker from 'react-dropdown-timepicker';
+import InputSlider from 'react-input-slider';
+
 
 const styles = theme => ({
   input: {
@@ -90,6 +91,8 @@ class FindMatchPage extends Component {
         reviews: '',
       value: '',
       startDate: moment(),
+      x: 10,
+    y: 10
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -108,6 +111,13 @@ class FindMatchPage extends Component {
       this.setState({value: event.target.value});
 
     }
+
+    handleChange = pos => {
+    this.setState({
+      x: pos.x,
+      y: pos.y
+    });
+  };
 
  static defaultProps = {
     center: {
@@ -145,15 +155,34 @@ class FindMatchPage extends Component {
         <Grid item>
           <center>
             <Paper elevation={4}>
-                <DatePicker
-                  className={classes.datePicker}
-                  selected={moment(this.state.startDate)}
-                  onChange={this.handleChangeStartDate}
-                />
+                 <InputSlider
+        className="slider slider-xy"
+        axis="xy"
+        x={this.state.x}
+        xmax={100}
+        y={this.state.y}
+        ymax={100}
+        onChange={this.handleChange}
+      />
+             
               </Paper>
           </center>
         </Grid>
-        
+        <Grid item>
+          <center>
+            <Paper elevation={4}>
+                <InputSlider
+        className="slider slider-xy"
+        axis="xy"
+        x={this.state.x}
+        xmax={100}
+        y={this.state.y}
+        ymax={100}
+        onChange={this.handleChange}
+      />
+              </Paper>
+          </center>
+        </Grid>
       </Grid>
     </form>
    
