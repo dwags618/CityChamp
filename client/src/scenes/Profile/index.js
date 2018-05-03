@@ -4,7 +4,23 @@ import Typography from 'material-ui/Typography';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../redux/navigation';
-import ImageUploader from 'react-images-upload';
+import Paper from 'material-ui/Paper';
+import { withStyles } from 'material-ui/styles';
+import Grid from 'material-ui/Grid';
+import Calendar from 'rc-calendar';
+
+
+const styles = theme => ({
+  contentContainer: {
+    flex: '1 0 auto',
+  },
+  pageContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    margin: '0 auto',
+  }
+})
 
 class MapsPage extends Component {
 
@@ -12,35 +28,122 @@ class MapsPage extends Component {
         super(props);
 
         
-         this.state = { pictures: [] };
-         this.onDrop = this.onDrop.bind(this);
+            this.state = {file: '',imagePreviewUrl: ''};
+
   }
 
   componentDidMount() {
     this.props.setTitle(this.props.translate('profile-page.title'));
   }
 
-  onDrop(picture) {
-        this.setState({
-            pictures: this.state.pictures.concat(picture),
-        });
+_handleSubmit(e) {
+    e.preventDefault();
+    // TODO: do something with -> this.state.file
+    console.log('handle uploading-', this.state.file);
+  }
+_handleImageChange(e) {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
     }
 
+    reader.readAsDataURL(file)
+  }
+
+    
+
   render() {
-    const { translate } = this.props;
+    let {imagePreviewUrl} = this.state;
+    let $imagePreview = null;
+    if (imagePreviewUrl) {
+      $imagePreview = (<img src={imagePreviewUrl} />);
+    } 
+
+    console.log(this.state.pictures)
+    const { translate, classes } = this.props;
 
     return (
-      <div>
-      <ImageUploader
-        withIcon={false}
-        withPreview={false}
-        label={''}
-        buttonText='Choose images'
-        onChange={this.onDrop}
-        imgExtension={['.jpg', '.gif', '.png', '.gif']}
-        maxFileSize={5242880}
-      />
-      <img src={this.state.pictures}/>
+     <div className={classes.pageContainer}>
+        <div className={classes.contentContainer}>
+        <Grid container justify="center">
+        <Grid item>
+          <center>
+            
+          
+      <Paper elevation={4}>
+        <div className="previewComponent">
+        <div className="imgPreview">
+            {$imagePreview}
+          </div>
+          <form onSubmit={(e)=>this._handleSubmit(e)}>
+            <input className="fileInput" 
+              type="file" 
+              onChange={(e)=>this._handleImageChange(e)} />
+            <div>
+            <button className="submitButton" 
+              type="submit" 
+              onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
+            </div>
+          </form>
+        </div>
+      </Paper>
+      </center>
+        </Grid>
+        <Grid item>
+          <center>
+            
+          
+      <Paper elevation={4}>
+        <div className="previewComponent">
+        <div className="imgPreview">
+            {$imagePreview}
+          </div>
+          <form onSubmit={(e)=>this._handleSubmit(e)}>
+            <input className="fileInput" 
+              type="file" 
+              onChange={(e)=>this._handleImageChange(e)} />
+            <div>
+            <button className="submitButton" 
+              type="submit" 
+              onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
+            </div>
+          </form>
+        </div>
+      </Paper>
+      </center>
+        </Grid>
+        <Grid item>
+          <center>
+            
+          
+      <Paper elevation={4}>
+        <div className="previewComponent">
+        <div className="imgPreview">
+            {$imagePreview}
+          </div>
+          <form onSubmit={(e)=>this._handleSubmit(e)}>
+            <input className="fileInput" 
+              type="file" 
+              onChange={(e)=>this._handleImageChange(e)} />
+            <div>
+            <button className="submitButton" 
+              type="submit" 
+              onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
+            </div>
+          </form>
+        </div>
+      </Paper>
+      </center>
+        </Grid>
+        </Grid>
+      </div>
       </div>
     );
   }
@@ -64,4 +167,4 @@ const mapDispatchToProps = dispatch => {
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(MapsPage));
+)(withStyles(styles)(MapsPage)));

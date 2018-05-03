@@ -18,6 +18,7 @@
     "react-payment": "^0.1.8",
     "react-router-confirm-navigation": "0.0.0",
     "react-table": "^6.8.2",
+    "react-webcam": "^0.5.0",
     "sqlite3": "^4.0.0",
     "webpack": "^3.11.0"
   }
