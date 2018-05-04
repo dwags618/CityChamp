@@ -13,7 +13,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Grid from 'material-ui/Grid';
 import moment from 'moment';
-import TimePicker from 'react-dropdown-timepicker';
 
 const styles = theme => ({
   input: {
@@ -90,6 +89,8 @@ class FindMatchPage extends Component {
         reviews: '',
       value: '',
       startDate: moment(),
+      x: 10,
+    y: 10
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -108,6 +109,13 @@ class FindMatchPage extends Component {
       this.setState({value: event.target.value});
 
     }
+
+    handleChange = pos => {
+    this.setState({
+      x: pos.x,
+      y: pos.y
+    });
+  };
 
  static defaultProps = {
     center: {
@@ -145,20 +153,19 @@ class FindMatchPage extends Component {
         <Grid item>
           <center>
             <Paper elevation={4}>
-                <DatePicker
+                 <DatePicker
                   className={classes.datePicker}
                   selected={moment(this.state.startDate)}
                   onChange={this.handleChangeStartDate}
                 />
+             
               </Paper>
           </center>
         </Grid>
         <Grid item>
           <center>
             <Paper elevation={4}>
-                <TimePicker
-                  time={this.state.time}
-                  onChange={this.handleTimeChange} />
+                <reactSlider defaultValue={[0, 100]} withBars />
               </Paper>
           </center>
         </Grid>
@@ -191,18 +198,25 @@ class FindMatchPage extends Component {
               <TableCell>{'$100'}</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>{'Cody'}</TableCell>
+            <TableCell>{'Tyler McWilliam'}</TableCell>
               <TableCell>{'Never'}</TableCell>
               <TableCell>{'4AM'}</TableCell>
               <TableCell>{'Beginner'}</TableCell>
-              <TableCell>{'Signed Arsenal Jersey'}</TableCell>
+              <TableCell>{'Performance Improvement Plan'}</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>{'Ben'}</TableCell>
+            <TableCell>{'Shelby Powers'}</TableCell>
               <TableCell>{'Monday'}</TableCell>
               <TableCell>{'Morning'}</TableCell>
-              <TableCell>{'Intermedia'}</TableCell>
-              <TableCell>{'$5'}</TableCell>
+              <TableCell>{'Amateur'}</TableCell>
+              <TableCell>{'Moroccan Shoes'}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>{'Taka'}</TableCell>
+              <TableCell>{'Tuesday'}</TableCell>
+              <TableCell>{'Morning'}</TableCell>
+              <TableCell>{'Amateur'}</TableCell>
+              <TableCell>{'Weed'}</TableCell>
           </TableRow>
         </Table>
         </div>
