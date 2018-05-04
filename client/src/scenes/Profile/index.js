@@ -25,23 +25,28 @@ const styles = theme => ({
 class MapsPage extends Component {
 
   constructor(props) {
-        super(props);
+    super(props);
+    this.state = {
+      file: '',
+      imagePreviewUrl: '',
+      value: ''
+    };
 
-        
-            this.state = {file: '',imagePreviewUrl: ''};
-
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     this.props.setTitle(this.props.translate('profile-page.title'));
   }
 
-_handleSubmit(e) {
+  _handleSubmit(e) {
     e.preventDefault();
     // TODO: do something with -> this.state.file
     console.log('handle uploading-', this.state.file);
   }
-_handleImageChange(e) {
+
+  _handleImageChange(e) {
     e.preventDefault();
 
     let reader = new FileReader();
@@ -57,7 +62,13 @@ _handleImageChange(e) {
     reader.readAsDataURL(file)
   }
 
-    
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+  }
 
   render() {
     let {imagePreviewUrl} = this.state;
@@ -72,78 +83,39 @@ _handleImageChange(e) {
     return (
      <div className={classes.pageContainer}>
         <div className={classes.contentContainer}>
-        <Grid container justify="center">
-        <Grid item>
-          <center>
-            
-          
-      <Paper elevation={4}>
-        <div className="previewComponent">
-        <div className="imgPreview">
-            {$imagePreview}
-          </div>
-          <form onSubmit={(e)=>this._handleSubmit(e)}>
-            <input className="fileInput" 
-              type="file" 
-              onChange={(e)=>this._handleImageChange(e)} />
-            <div>
-            <button className="submitButton" 
-              type="submit" 
-              onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
-            </div>
-          </form>
+          <Grid container justify="center">
+            <Grid item>
+              <center>
+                <Paper elevation={4}>
+                  <div className="previewComponent">
+                    <div className="imgPreview">
+                      {$imagePreview}
+                    </div>
+                    <form onSubmit={(e)=>this._handleSubmit(e)}>
+                      <input className="fileInput" type="file" onChange={(e)=>this._handleImageChange(e)} />
+                        <div>
+                          <button className="submitButton" type="submit" onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
+                        </div>
+                    </form>
+                  </div>
+                </Paper>
+              </center>
+            </Grid>
+            <Grid item>
+              <center> 
+                <Paper elevation={4}>
+                  <form onSubmit={this.handleSubmit}>
+                    <label>
+                      Name:
+                      <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    </label>
+                    <input type="submit" value="Submit" />
+                  </form>
+                </Paper>
+              </center>
+            </Grid>
+          </Grid>
         </div>
-      </Paper>
-      </center>
-        </Grid>
-        <Grid item>
-          <center>
-            
-          
-      <Paper elevation={4}>
-        <div className="previewComponent">
-        <div className="imgPreview">
-            {$imagePreview}
-          </div>
-          <form onSubmit={(e)=>this._handleSubmit(e)}>
-            <input className="fileInput" 
-              type="file" 
-              onChange={(e)=>this._handleImageChange(e)} />
-            <div>
-            <button className="submitButton" 
-              type="submit" 
-              onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
-            </div>
-          </form>
-        </div>
-      </Paper>
-      </center>
-        </Grid>
-        <Grid item>
-          <center>
-            
-          
-      <Paper elevation={4}>
-        <div className="previewComponent">
-        <div className="imgPreview">
-            {$imagePreview}
-          </div>
-          <form onSubmit={(e)=>this._handleSubmit(e)}>
-            <input className="fileInput" 
-              type="file" 
-              onChange={(e)=>this._handleImageChange(e)} />
-            <div>
-            <button className="submitButton" 
-              type="submit" 
-              onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
-            </div>
-          </form>
-        </div>
-      </Paper>
-      </center>
-        </Grid>
-        </Grid>
-      </div>
       </div>
     );
   }
