@@ -13,8 +13,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Grid from 'material-ui/Grid';
 import moment from 'moment';
-import InputSlider from 'react-input-slider';
-import reactSlider from 'react-slider';
 
 const styles = theme => ({
   input: {
