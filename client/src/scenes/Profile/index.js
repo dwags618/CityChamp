@@ -19,6 +19,9 @@ const styles = theme => ({
     flexDirection: 'column',
     height: '100%',
     margin: '0 auto',
+  },
+  formContainer: {
+    height: 500,
   }
 })
 
@@ -81,7 +84,7 @@ class MapsPage extends Component {
     const { translate, classes } = this.props;
 
     return (
-     <div className={classes.pageContainer}>
+      <div className={classes.pageContainer}>
         <div className={classes.contentContainer}>
           <Grid container justify="center">
             <Grid item>
@@ -91,7 +94,7 @@ class MapsPage extends Component {
                     <div className="imgPreview">
                       {$imagePreview}
                     </div>
-                    <form onSubmit={(e)=>this._handleSubmit(e)}>
+                    <form onSubmit={(e)=>this._handleSubmit(e)} className={classes.formContainer}>
                       <input className="fileInput" type="file" onChange={(e)=>this._handleImageChange(e)} />
                         <div>
                           <button className="submitButton" type="submit" onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
@@ -102,9 +105,22 @@ class MapsPage extends Component {
               </center>
             </Grid>
             <Grid item>
-              <center> 
+              <center>
                 <Paper elevation={4}>
-                  <form onSubmit={this.handleSubmit}>
+                  <form onSubmit={this.handleSubmit} className={classes.formContainer}>
+                    <label>
+                      Name:
+                      <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    </label>
+                    <input type="submit" value="Submit" />
+                  </form>
+                </Paper>
+              </center>
+            </Grid>
+            <Grid item>
+              <center>
+                <Paper elevation={4}>
+                  <form onSubmit={this.handleSubmit} className={classes.formContainer}>
                     <label>
                       Name:
                       <input type="text" value={this.state.value} onChange={this.handleChange} />
