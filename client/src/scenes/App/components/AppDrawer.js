@@ -10,7 +10,7 @@ import AppPages from './AppPages';
 const styles = theme => ({
   paper: {
     background: theme.palette.primary.main,
-    width: 400
+    width: 300
   },
   listItem: {
     '&:hover': {
