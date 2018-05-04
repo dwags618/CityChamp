@@ -7,6 +7,8 @@ import { setTitle } from '../../redux/navigation';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
+import addimage from './blank-profile-picture.png';
+import $ from 'jquery';
 
 const styles = theme => ({
   pageContainer: {
@@ -26,14 +28,37 @@ const styles = theme => ({
   formContainerRightBottom: {
     paddingTop:50
   },
-  fileInput: {
-    
-  },
   footerContainer: {
     paddingBottom: 20
   },
   contentContainer: {
     flex: '1 0 auto',
+  },
+  hideButton: {
+        display: 'none',
+  },
+  customfileupload: {
+    color: '#ffffff',
+    display: 'block',
+    position: 'relative',
+    width: 200,
+    height: 46,
+    border: 0,
+    margin: 6,
+    background: 'linear-gradient(90deg, #3394c1, #4ac3e2 20%)',
+    paddingTop: 15,
+    '&:before': {
+        content: '\' \'',
+        display: 'block',
+        position: 'absolute',
+        top: 7,
+        right: '-16px',
+        background: 'inherit',
+        zIndex: -1
+    },
+    '&:focus': {
+        outline: 0
+    }
   },
 })
 
@@ -62,19 +87,22 @@ class MapsPage extends Component {
   }
 
   _handleImageChange(e) {
+    $('#imgPreview').show();
+    $('#addimage').hide();
     e.preventDefault();
 
     let reader = new FileReader();
     let file = e.target.files[0];
 
     reader.onloadend = () => {
-      this.setState({
-        file: file,
-        imagePreviewUrl: reader.result
-      });
+        this.setState({
+            file: file,
+            imagePreviewUrl: reader.result
+        });
     }
 
     reader.readAsDataURL(file)
+
   }
 
   handleChange(event) {
@@ -89,7 +117,7 @@ class MapsPage extends Component {
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
-      $imagePreview = (<img src={imagePreviewUrl} alt="imagePreviewUrl" />);
+      $imagePreview = (<div><img src={imagePreviewUrl} alt={imagePreviewUrl} width={200} height={200} style={{paddingTop:20}} /></div>);
     } 
 
     console.log(this.state.pictures)
@@ -101,27 +129,30 @@ class MapsPage extends Component {
           <Grid container justify="center">
             <Grid item>
               <center>
-                <Paper elevation={4}>
-                  <div className={classes.formContainerLeft}>
-                    <div className="imgPreview">
+                <Paper elevation={4} className={classes.formContainerLeft}>
+                  <div>
+                    <div className="imgPreview" id="imgPreview">
                       {$imagePreview}
                     </div>
-                    <form onSubmit={(e)=>this._handleSubmit(e)} >
-
-                      <input className={classes.fileInput} type="file" onChange={(e)=>this._handleImageChange(e)} />
-                        <div>
-                          <button className="submitButton" type="submit" onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
-                        </div>
-                    </form>
+                    <img width="200" height="200"  style={{paddingTop:20}} alt={addimage} src={addimage} id="addimage" class="addimage"    />
+                    <div>
+                      <label for="file-upload" className={classes.customfileupload}>
+                        Upload Image
+                      </label>
+                      <input id="file-upload" type="file" className={classes.hideButton}  onChange={(e)=>this._handleImageChange(e)} />
+                    </div>
                   </div>
                 </Paper>
               </center>
             </Grid>
             <div style={{marginLeft: 50, marginTop:10}}>
             <Grid item>
-              <center>
-                <Paper elevation={4}>
-                  <form onSubmit={this.handleSubmit} className={classes.formContainerRightTop}>
+              <Paper elevation={4} className={classes.formContainerRightTop}>
+                <Typography variant="title">
+                  {translate('profile-page.title')}
+                </Typography>
+                <center>
+                  <form onSubmit={this.handleSubmit} >
                     <label>
                       Name:
                       <input type="text" value={this.state.value} onChange={this.handleChange} />
@@ -130,8 +161,8 @@ class MapsPage extends Component {
                     <input type="submit" value="Submit"  />
                     </div>
                   </form>
+                  </center>
                 </Paper>
-                </center>
               <div className={classes.formContainerRightBottom}>
               <Grid item>
               <center>
