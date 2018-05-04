@@ -28,9 +28,6 @@ const styles = theme => ({
   formContainerRightBottom: {
     paddingTop:50
   },
-  fileInput: {
-    
-  },
   footerContainer: {
     paddingBottom: 20
   },
@@ -41,28 +38,28 @@ const styles = theme => ({
         display: 'none',
   },
   customfileupload: {
-        color: '#ffffff',
+    color: '#ffffff',
+    display: 'block',
+    position: 'relative',
+    width: 200,
+    height: 46,
+    border: 0,
+    margin: 6,
+    background: 'linear-gradient(90deg, #3394c1, #4ac3e2 20%)',
+    paddingTop: 15,
+    '&:before': {
+        content: '\' \'',
         display: 'block',
-        position: 'relative',
-        width: 200,
-        height: 46,
-        border: 0,
-        margin: 6,
-        background: 'linear-gradient(90deg, #3394c1, #4ac3e2 20%)',
-        paddingTop: 15,
-        '&:before': {
-            content: '\' \'',
-            display: 'block',
-            position: 'absolute',
-            top: 7,
-            right: '-16px',
-            background: 'inherit',
-            zIndex: -1
-        },
-        '&:focus': {
-            outline: 0
-        }
+        position: 'absolute',
+        top: 7,
+        right: '-16px',
+        background: 'inherit',
+        zIndex: -1
     },
+    '&:focus': {
+        outline: 0
+    }
+  },
 })
 
 class MapsPage extends Component {
@@ -90,23 +87,23 @@ class MapsPage extends Component {
   }
 
   _handleImageChange(e) {
-        $('#imgPreview').show();
-        $('#addimage').hide();
-        e.preventDefault();
+    $('#imgPreview').show();
+    $('#addimage').hide();
+    e.preventDefault();
 
-        let reader = new FileReader();
-        let file = e.target.files[0];
+    let reader = new FileReader();
+    let file = e.target.files[0];
 
-        reader.onloadend = () => {
-            this.setState({
-                file: file,
-                imagePreviewUrl: reader.result
-            });
-        }
-
-        reader.readAsDataURL(file)
-
+    reader.onloadend = () => {
+        this.setState({
+            file: file,
+            imagePreviewUrl: reader.result
+        });
     }
+
+    reader.readAsDataURL(file)
+
+  }
 
   handleChange(event) {
     this.setState({value: event.target.value});
@@ -133,32 +130,28 @@ class MapsPage extends Component {
             <Grid item>
               <center>
                 <Paper elevation={4} className={classes.formContainerLeft}>
-                  <div >
+                  <div>
                     <div className="imgPreview" id="imgPreview">
-              {$imagePreview}
-              </div>
-        
-            <img width="200" height="200"  style={{paddingTop:20}} alt={addimage} src={addimage} id="addimage" class="addimage"    />
-            <div >
-              <label  for="file-upload" className={classes.customfileupload}>
-              Upload Image
-          </label>
-<input id="file-upload" type="file" className={classes.hideButton}  onChange={(e)=>this._handleImageChange(e)} />
-      </div>
-                   
+                      {$imagePreview}
+                    </div>
+                    <img width="200" height="200"  style={{paddingTop:20}} alt={addimage} src={addimage} id="addimage" class="addimage"    />
+                    <div>
+                      <label for="file-upload" className={classes.customfileupload}>
+                        Upload Image
+                      </label>
+                      <input id="file-upload" type="file" className={classes.hideButton}  onChange={(e)=>this._handleImageChange(e)} />
+                    </div>
                   </div>
                 </Paper>
               </center>
             </Grid>
             <div style={{marginLeft: 50, marginTop:10}}>
             <Grid item>
-              
-                <Paper elevation={4} className={classes.formContainerRightTop}>
+              <Paper elevation={4} className={classes.formContainerRightTop}>
                 <Typography variant="title">
-        {translate('profile-page.title')}
-      </Typography>
+                  {translate('profile-page.title')}
+                </Typography>
                 <center>
-
                   <form onSubmit={this.handleSubmit} >
                     <label>
                       Name:
@@ -170,7 +163,6 @@ class MapsPage extends Component {
                   </form>
                   </center>
                 </Paper>
-                
               <div className={classes.formContainerRightBottom}>
               <Grid item>
               <center>
