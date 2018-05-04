@@ -5,9 +5,9 @@ const styles = {
   content: {
     height: '100%',
     margin: '0 auto',
-    maxWidth: 900,
+    maxWidth: 1200,
     minWidth: 750,
-    paddingTop: 150,
+    paddingTop: 100,
     paddingLeft: 20,
     paddingRight: 20,
   },
