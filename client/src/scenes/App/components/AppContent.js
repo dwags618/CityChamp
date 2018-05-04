@@ -7,7 +7,7 @@ const styles = {
     margin: '0 auto',
     maxWidth: 900,
     minWidth: 750,
-    paddingTop: 94,
+    paddingTop: 150,
     paddingLeft: 20,
     paddingRight: 20,
   },
