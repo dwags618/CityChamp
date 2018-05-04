@@ -7,13 +7,8 @@ import { setTitle } from '../../redux/navigation';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
-import Calendar from 'rc-calendar';
-
 
 const styles = theme => ({
-  contentContainer: {
-    flex: '1 0 auto',
-  },
   pageContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -32,8 +27,14 @@ const styles = theme => ({
     paddingTop:50
   },
   fileInput: {
-    align: 'center'
-  }
+    
+  },
+  footerContainer: {
+    paddingBottom: 20
+  },
+  contentContainer: {
+    flex: '1 0 auto',
+  },
 })
 
 class MapsPage extends Component {
@@ -88,7 +89,7 @@ class MapsPage extends Component {
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
-      $imagePreview = (<img src={imagePreviewUrl} />);
+      $imagePreview = (<img src={imagePreviewUrl} alt="imagePreviewUrl" />);
     } 
 
     console.log(this.state.pictures)
@@ -107,7 +108,7 @@ class MapsPage extends Component {
                     </div>
                     <form onSubmit={(e)=>this._handleSubmit(e)} >
 
-                      <input className="fileInput" type="file" onChange={(e)=>this._handleImageChange(e)} />
+                      <input className={classes.fileInput} type="file" onChange={(e)=>this._handleImageChange(e)} />
                         <div>
                           <button className="submitButton" type="submit" onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
                         </div>
@@ -125,10 +126,12 @@ class MapsPage extends Component {
                       Name:
                       <input type="text" value={this.state.value} onChange={this.handleChange} />
                     </label>
-                    <input type="submit" value="Submit" />
+                    <div className={classes.footerContainer}>
+                    <input type="submit" value="Submit"  />
+                    </div>
                   </form>
                 </Paper>
-              </center>
+                </center>
               <div className={classes.formContainerRightBottom}>
               <Grid item>
               <center>
