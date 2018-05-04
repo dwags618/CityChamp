@@ -20,8 +20,19 @@ const styles = theme => ({
     height: '100%',
     margin: '0 auto',
   },
-  formContainer: {
-    height: 500,
+  formContainerLeft: {
+    height: 600,
+    width: 350
+  },
+  formContainerRightTop: {
+    height: 275,
+    width: 450
+  },
+  formContainerRightBottom: {
+    paddingTop:50
+  },
+  fileInput: {
+    align: 'center'
   }
 })
 
@@ -90,11 +101,12 @@ class MapsPage extends Component {
             <Grid item>
               <center>
                 <Paper elevation={4}>
-                  <div className="previewComponent">
+                  <div className={classes.formContainerLeft}>
                     <div className="imgPreview">
                       {$imagePreview}
                     </div>
-                    <form onSubmit={(e)=>this._handleSubmit(e)} className={classes.formContainer}>
+                    <form onSubmit={(e)=>this._handleSubmit(e)} >
+
                       <input className="fileInput" type="file" onChange={(e)=>this._handleImageChange(e)} />
                         <div>
                           <button className="submitButton" type="submit" onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
@@ -104,10 +116,11 @@ class MapsPage extends Component {
                 </Paper>
               </center>
             </Grid>
+            <div style={{marginLeft: 50, marginTop:10}}>
             <Grid item>
               <center>
                 <Paper elevation={4}>
-                  <form onSubmit={this.handleSubmit} className={classes.formContainer}>
+                  <form onSubmit={this.handleSubmit} className={classes.formContainerRightTop}>
                     <label>
                       Name:
                       <input type="text" value={this.state.value} onChange={this.handleChange} />
@@ -116,20 +129,17 @@ class MapsPage extends Component {
                   </form>
                 </Paper>
               </center>
-            </Grid>
-            <Grid item>
+              <div className={classes.formContainerRightBottom}>
+              <Grid item>
               <center>
                 <Paper elevation={4}>
-                  <form onSubmit={this.handleSubmit} className={classes.formContainer}>
-                    <label>
-                      Name:
-                      <input type="text" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <input type="submit" value="Submit" />
-                  </form>
+                  <div style={{height: 275}}/>
                 </Paper>
               </center>
             </Grid>
+            </div>
+            </Grid>
+            </div>
           </Grid>
         </div>
       </div>
