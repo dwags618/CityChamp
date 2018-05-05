@@ -4,7 +4,8 @@
   },
   "profile-page": {
     "title": ["Profile"],
-    "match-details": ["Match Details"]
+    "match-details": ["Match Details"],
+    "schedule": ["Schedule"]
   },
   "findmatch-page": {
     "title": ["Find Match"]
@@ -31,7 +32,6 @@
     "confirm-password-text": ["Confirm Password (Min. 8 characters)"],
     "password-text": ["Password (Min. 8 characters)"]
   },
-
   "buttons": {
     "next": ["Next"],
     "back": ["Back"],

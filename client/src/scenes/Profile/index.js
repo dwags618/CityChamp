@@ -58,11 +58,14 @@ class MapsPage extends Component {
                 <MatchDetails/>
                 <div className={classes.formContainerRightBottom}>
                   <Grid item>
-                    <center>
                       <Paper elevation={4}>
-                        <div style={{height: 275}}/>
+
+                        <div style={{height: 275, paddingTop: 20, paddingLeft:20}}>
+          <Typography variant="title">
+            {translate('profile-page.schedule')}
+          </Typography>
+        </div>
                       </Paper>
-                    </center>
                   </Grid>
                 </div>
               </Grid>
