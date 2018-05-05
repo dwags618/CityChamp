@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
+import Casino from 'material-ui-icons/Casino';
 
 const styles = theme => ({
   formContainerRightTop: {
@@ -33,6 +34,10 @@ class ProfilePicture extends Component {
             {translate('profile-page.match-details')}
           </Typography>
         </div>
+          
+          <div>
+          <Casino/>
+          </div>
           <center>
             <form onSubmit={this.handleSubmit} >
               <label>

@@ -12,6 +12,8 @@
     "dropdownmenu": "^1.0.0",
     "formsy-material-ui": "^0.6.3",
     "formsy-react": "^1.1.4",
+    "fullcalendar": "^3.9.0",
+    "fullcalendar-scheduler": "^1.9.4",
     "google-map-react": "^0.34.0",
     "google-maps-react": "^1.1.11",
     "immutable": "^3.8.2",
