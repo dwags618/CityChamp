@@ -97,6 +97,10 @@ class FindMatchPage extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.setTitle(this.props.translate('findmatch-page.title'));
+  }
+
   handleSubmit(event) {
 
       event.preventDefault();
@@ -124,6 +128,8 @@ class FindMatchPage extends Component {
     },
     zoom: 11
   };
+
+  
 
   render() {
     const { translate, classes } = this.props;
@@ -240,11 +246,11 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default geolocated({
-  positionOptions: {
-    enableHighAccuracy: false,
-  },
-  userDecisionTimeout: 5000,
-})(withStyles(styles)(FindMatchPage))
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(FindMatchPage)));
+
+
 
 
