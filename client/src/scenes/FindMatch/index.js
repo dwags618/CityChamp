@@ -226,7 +226,7 @@ class FindMatchPage extends Component {
               <TableCell>{'Tuesday'}</TableCell>
               <TableCell>{'Morning'}</TableCell>
               <TableCell>{'Amateur'}</TableCell>
-              <TableCell>{'Weed'}</TableCell>
+              <TableCell>{'Chips'}</TableCell>
           </TableRow>
         </Table>
         </div>
