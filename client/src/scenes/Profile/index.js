@@ -8,6 +8,7 @@ import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import ProfilePicture from './components/ProfilePicture';
+import MatchDetails from './components/MatchDetails';
 
 const styles = theme => ({
   pageContainer: {
@@ -15,10 +16,6 @@ const styles = theme => ({
     flexDirection: 'column',
     height: '100%',
     margin: '0 auto',
-  },
-  formContainerRightTop: {
-    height: 275,
-    width: 450
   },
   formContainerRightBottom: {
     paddingTop:50
@@ -40,34 +37,14 @@ class MapsPage extends Component {
       imagePreviewUrl: '',
       value: ''
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     this.props.setTitle(this.props.translate('profile-page.title'));
   }
 
-  _handleSubmit(e) {
-    e.preventDefault();
-    // TODO: do something with -> this.state.file
-    console.log('handle uploading-', this.state.file);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
-
   render() {
- const { translate, classes } = this.props;
-  
-
-   
+  const { translate, classes } = this.props;
 
     return (
       <div className={classes.pageContainer}>
@@ -77,33 +54,18 @@ class MapsPage extends Component {
               <ProfilePicture/>
             </Grid>
             <div style={{marginLeft: 50, marginTop:10}}>
-            <Grid item>
-              <Paper elevation={4} className={classes.formContainerRightTop}>
-                <Typography variant="title">
-                  {translate('profile-page.title')}
-                </Typography>
-                <center>
-                  <form onSubmit={this.handleSubmit} >
-                    <label>
-                      Name:
-                      <input type="text" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <div className={classes.footerContainer}>
-                    <input type="submit" value="Submit"  />
-                    </div>
-                  </form>
-                  </center>
-                </Paper>
-              <div className={classes.formContainerRightBottom}>
               <Grid item>
-              <center>
-                <Paper elevation={4}>
-                  <div style={{height: 275}}/>
-                </Paper>
-              </center>
-            </Grid>
-            </div>
-            </Grid>
+                <MatchDetails/>
+                <div className={classes.formContainerRightBottom}>
+                  <Grid item>
+                    <center>
+                      <Paper elevation={4}>
+                        <div style={{height: 275}}/>
+                      </Paper>
+                    </center>
+                  </Grid>
+                </div>
+              </Grid>
             </div>
           </Grid>
         </div>

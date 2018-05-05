@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
-import addimage from './blank-profile-picture.png';
-import $ from 'jquery';
 
 const styles = theme => ({
   formContainerRightTop: {
