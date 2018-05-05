@@ -10,7 +10,7 @@ import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Tabl
 import MapForm from './components/MapForm';
 import Paper from 'material-ui/Paper';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import 'react-week-calendar/dist/style.less';
 import Grid from 'material-ui/Grid';
 import moment from 'moment';
 

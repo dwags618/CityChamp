@@ -10,7 +10,7 @@ import Grid from 'material-ui/Grid';
 import ProfilePicture from './components/ProfilePicture';
 import MatchDetails from './components/MatchDetails';
 import WeekCalendar from 'react-week-calendar';
-import 'react-week-calendar/dist/style.css';
+import "react-week-calendar/dist/style.css";
 
 
 const styles = theme => ({
@@ -68,9 +68,7 @@ class MapsPage extends Component {
             {translate('profile-page.schedule')}
           </Typography>
         </div>
-        <div>
-        <WeekCalendar width={450} height={275}/>
-        </div>
+        <WeekCalendar />
                       </Paper>
                   </Grid>
                 </div>
