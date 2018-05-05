@@ -47,12 +47,10 @@ const styles = theme => ({
   map: {
     position:'relative', 
     marginTop: 20, 
-    marginLeft: 75, 
     width: 750, 
     height: 500
   },
   table: {
-    position:'relative', 
     marginTop: 20, 
     width: 900, 
     height: 350
@@ -179,12 +177,18 @@ class FindMatchPage extends Component {
     </form>
    
     </div>
+    <Grid item>
+    <center>
     <div className={classes.map}>
 
      <MapForm/>
 
       
       </div>
+      </center>
+      </Grid>
+      <Grid>
+      <center>
       <div className={classes.table}>
       <Table >
           <TableHead>
@@ -226,6 +230,8 @@ class FindMatchPage extends Component {
           </TableRow>
         </Table>
         </div>
+        </center>
+        </Grid>
       </div>
     );
   }
