@@ -28,9 +28,11 @@ class ProfilePicture extends Component {
 
     return (
        <Paper elevation={4} className={classes.formContainerRightTop}>
+       <div style={{paddingTop: 20, paddingLeft:20}}>
           <Typography variant="title">
-            {translate('profile-page.title')}
+            {translate('profile-page.match-details')}
           </Typography>
+        </div>
           <center>
             <form onSubmit={this.handleSubmit} >
               <label>

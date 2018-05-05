@@ -3,7 +3,8 @@
     "title": ["Home"]
   },
   "profile-page": {
-    "title": ["Profile"]
+    "title": ["Profile"],
+    "match-details": ["Match Details"]
   },
   "findmatch-page": {
     "title": ["Find Match"]
