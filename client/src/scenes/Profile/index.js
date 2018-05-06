@@ -63,7 +63,7 @@ class MapsPage extends Component {
                   <Grid item>
                       <Paper elevation={4}>
 
-                        <div style={{height: 275, paddingTop: 20, paddingLeft:20}}>
+                        <div style={{height: 275, paddingTop: 30, paddingLeft:30}}>
           <Typography variant="title">
             {translate('profile-page.schedule')}
           </Typography>

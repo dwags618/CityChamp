@@ -32,16 +32,19 @@ class ProfilePicture extends Component {
 
     return (
        <Paper elevation={4} className={classes.formContainerRightTop}>
-       <div style={{paddingTop: 20, paddingLeft:20}}>
+       <div style={{paddingTop: 30, paddingLeft:30}}>
           <Typography variant="title">
             {translate('profile-page.match-details')}
           </Typography>
         </div>
           
-          <div>
-          <Casino class="material-icons"/>
+          <div style={{paddingTop: 20, paddingLeft:30}}>
+          
            <Straighten class="material-icons"/>
-           <FitnessCenter class="material-icons"/>
+           <FitnessCenter class="material-icons-straighten"/>
+           <div>
+           <Casino class="material-icons-casino"/>
+           </div>
           </div>
           <center>
             <form onSubmit={this.handleSubmit} >
