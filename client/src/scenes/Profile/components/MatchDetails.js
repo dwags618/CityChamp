@@ -24,9 +24,19 @@ class ProfilePicture extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: '',
+      rangeValue: [20, 40]
     };
   }
+
+  onSliderChange = (rangeValue) => {
+    console.log(rangeValue);
+    this.setState({
+      rangeValue,
+    });
+  }
+
+
 
   render() {
 
@@ -46,7 +56,7 @@ class ProfilePicture extends Component {
            <FitnessCenter class="material-icons-straighten"/>
            <div/>
            <Casino class="material-icons-casino"/>
-           <Range allowCross={false} defaultValue={[0, 20]} style={{width:150, display: 'inline-block', paddingBottom:25, marginLeft: 30}}/>
+           <Range allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} style={{width:150, display: 'inline-block', paddingBottom:25, marginLeft: 30}}/>
           </div>
           <center>
             <form onSubmit={this.handleSubmit} >
