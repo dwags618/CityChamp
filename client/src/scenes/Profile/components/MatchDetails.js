@@ -9,6 +9,8 @@ import Casino from 'material-ui-icons/Casino';
 import FitnessCenter from 'material-ui-icons/FitnessCenter';
 import Straighten from 'material-ui-icons/Straighten';
 import "./style.css";
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 const styles = theme => ({
   formContainerRightTop: {
@@ -42,9 +44,9 @@ class ProfilePicture extends Component {
           
            <Straighten class="material-icons"/>
            <FitnessCenter class="material-icons-straighten"/>
-           <div>
+           <div/>
            <Casino class="material-icons-casino"/>
-           </div>
+           <Range style={{width:150, display: 'inline-block', paddingBottom:25, marginLeft: 30}}/>
           </div>
           <center>
             <form onSubmit={this.handleSubmit} >
