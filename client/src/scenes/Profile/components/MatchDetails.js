@@ -6,6 +6,9 @@ import { withRouter } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import Casino from 'material-ui-icons/Casino';
+import FitnessCenter from 'material-ui-icons/FitnessCenter';
+import Straighten from 'material-ui-icons/Straighten';
+import "./style.css";
 
 const styles = theme => ({
   formContainerRightTop: {
@@ -36,7 +39,9 @@ class ProfilePicture extends Component {
         </div>
           
           <div>
-          <Casino/>
+          <Casino class="material-icons"/>
+           <Straighten class="material-icons"/>
+           <FitnessCenter class="material-icons"/>
           </div>
           <center>
             <form onSubmit={this.handleSubmit} >
