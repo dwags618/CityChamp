@@ -16,7 +16,8 @@ import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Tabl
 const styles = theme => ({
   formContainerRightTop: {
     height: 275,
-    width: 450
+    width: 450,
+    padding: 30
   }
 })
 
@@ -43,11 +44,11 @@ class ProfilePicture extends Component {
 
     return (
      <Paper elevation={4} className={classes.formContainerRightTop}>     
-      <table>
+      <table style={{width:350}}>
         <tr>
-          <Typography variant="title">
-                  {translate('profile-page.match-details')}
-                </Typography>
+          <Typography variant="title" style={{paddingBottom:20}}>
+            {translate('profile-page.match-details')}
+          </Typography>
         </tr>
         <tr>
           <td><Straighten class="material-icons-straighten"/></td>
@@ -57,14 +58,14 @@ class ProfilePicture extends Component {
           <div/>
           </td>
           <td><FitnessCenter class="material-icons-straighten"/></td>
-          <td>150lbs.
+          <td>150 lbs.
           <div/>
           Weight
           <div/>
           </td>
         </tr>
         <tr>
-          <td><Casino class="material-icons-straighten"/></td>
+          <td><Casino class="material-icons-straighten" style={{marginTop:30}}/></td>
           <td>Betting Amount
           <div/>
           <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} />
