@@ -46,7 +46,7 @@ class ProfilePicture extends Component {
            <FitnessCenter class="material-icons-straighten"/>
            <div/>
            <Casino class="material-icons-casino"/>
-           <Range style={{width:150, display: 'inline-block', paddingBottom:25, marginLeft: 30}}/>
+           <Range allowCross={false} defaultValue={[0, 20]} style={{width:150, display: 'inline-block', paddingBottom:25, marginLeft: 30}}/>
           </div>
           <center>
             <form onSubmit={this.handleSubmit} >
