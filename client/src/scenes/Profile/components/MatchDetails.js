@@ -9,9 +9,8 @@ import Casino from 'material-ui-icons/Casino';
 import FitnessCenter from 'material-ui-icons/FitnessCenter';
 import Straighten from 'material-ui-icons/Straighten';
 import "./style.css";
-import Slider, { Range } from 'rc-slider';
+import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 
 const styles = theme => ({
   formContainerRightTop: {

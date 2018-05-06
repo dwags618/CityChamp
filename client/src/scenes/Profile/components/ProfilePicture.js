@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
-import Typography from 'material-ui/Typography';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
@@ -96,6 +95,24 @@ class ProfilePicture extends Component {
               </div>
             </div>
         </center>
+        <div style={{paddingLeft:70, paddingTop:20}}>
+        <div/>
+        First Name:
+        <div/>
+        Dylan
+        <div style={{paddingTop:20}}/>
+        Last Name:
+        <div/>
+        Wagner
+        <div style={{paddingTop:20}}/>
+        Email Address:
+        <div/>
+        dwags618@gmail.com
+        <div style={{paddingTop:20}}/>
+        Username:
+        <div/>
+        dwags618
+        </div>
       </Paper>
     );
   }
