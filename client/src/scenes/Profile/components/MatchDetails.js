@@ -11,6 +11,7 @@ import Straighten from 'material-ui-icons/Straighten';
 import "./style.css";
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 
 const styles = theme => ({
   formContainerRightTop: {
@@ -52,10 +53,12 @@ class ProfilePicture extends Component {
          <a style={{marginLeft: 30}}>Height</a>
 
          <FitnessCenter class="material-icons-straighten"/>
-         <a style={{marginLeft: 30}}>Weight</a>
+         <a style={{marginLeft: 30, paddingBottom: 20, }}>Weight</a>
          <div/>
          <Casino class="material-icons-casino"/>
-         <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} style={{width:150, display: 'inline-block', paddingBottom:25, marginLeft: 30}}/>
+         <a style ={{marginBottom:50, marginLeft: 30}}>Betting Amount</a>
+
+         <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} style={{width:150}}/>
           
         </div>
         <a style={{marginLeft:150}}>${this.state.rangeValue[0]}</a>
