@@ -42,53 +42,38 @@ class ProfilePicture extends Component {
     const { translate, classes } = this.props;
 
     return (
-     <Paper elevation={4} className={classes.formContainerRightTop}>
-          
-        
-         
-         
-
-         
-         
-         
-         
-
-         
-          
-        
-        
-        <table>
-  <tr>
-    <Typography variant="title">
-            {translate('profile-page.match-details')}
-          </Typography>
-  </tr>
-  <tr>
-    <td><Straighten class="material-icons-straighten"/></td>
-    <td>5'10"
-    <div/>
-    Height
-    <div/>
-    </td>
-    <td><FitnessCenter class="material-icons-straighten"/></td>
-    <td>150lbs.
-    <div/>
-    Weight
-    <div/>
-    </td>
-  </tr>
-  <tr>
-    <td><Casino class="material-icons-straighten"/></td>
-    <td>Betting Amount
-    <div/>
-    <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} />
-    <div/>
-    {this.state.rangeValue[0]}
-        -${this.state.rangeValue[1]}
-    </td>
-  </tr>
-</table>
-      </Paper>
+     <Paper elevation={4} className={classes.formContainerRightTop}>     
+      <table>
+        <tr>
+          <Typography variant="title">
+                  {translate('profile-page.match-details')}
+                </Typography>
+        </tr>
+        <tr>
+          <td><Straighten class="material-icons-straighten"/></td>
+          <td>5'10"
+          <div/>
+          Height
+          <div/>
+          </td>
+          <td><FitnessCenter class="material-icons-straighten"/></td>
+          <td>150lbs.
+          <div/>
+          Weight
+          <div/>
+          </td>
+        </tr>
+        <tr>
+          <td><Casino class="material-icons-straighten"/></td>
+          <td>Betting Amount
+          <div/>
+          <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} />
+          <div/>
+          {this.state.rangeValue[0]}-${this.state.rangeValue[1]}
+          </td>
+        </tr>
+      </table>
+    </Paper>
     );
   }
 }
