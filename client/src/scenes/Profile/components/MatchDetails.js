@@ -43,37 +43,51 @@ class ProfilePicture extends Component {
 
     return (
      <Paper elevation={4} className={classes.formContainerRightTop}>
-       <div style={{paddingTop: 30, paddingLeft:30}}>
-          <Typography variant="title">
+          
+        
+         
+         
+
+         
+         
+         
+         
+
+         
+          
+        
+        
+        <table>
+  <tr>
+    <Typography variant="title">
             {translate('profile-page.match-details')}
           </Typography>
-        </div>
-        <div style={{paddingTop: 20, paddingLeft:30}}>
-         <Straighten class="material-icons"/>
-         <a style={{marginLeft: 30}}>Height</a>
-
-         <FitnessCenter class="material-icons-straighten"/>
-         <a style={{marginLeft: 30, paddingBottom: 20, }}>Weight</a>
-         <div/>
-         <Casino class="material-icons-casino"/>
-         <a style ={{marginBottom:50, marginLeft: 30}}>Betting Amount</a>
-
-         <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} style={{width:150}}/>
-          
-        </div>
-        <a style={{marginLeft:150}}>${this.state.rangeValue[0]}</a>
-        <a> - ${this.state.rangeValue[1]}</a>
-        <center>
-          <form onSubmit={this.handleSubmit} >
-            <label>
-              Name:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
-            </label>
-            <div className={classes.footerContainer}>
-            <input type="submit" value="Submit"  />
-            </div>
-          </form>
-        </center>
+  </tr>
+  <tr>
+    <td><Straighten class="material-icons-straighten"/></td>
+    <td>5'10"
+    <div/>
+    Height
+    <div/>
+    </td>
+    <td><FitnessCenter class="material-icons-straighten"/></td>
+    <td>150lbs.
+    <div/>
+    Weight
+    <div/>
+    </td>
+  </tr>
+  <tr>
+    <td><Casino class="material-icons-straighten"/></td>
+    <td>Betting Amount
+    <div/>
+    <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} />
+    <div/>
+    {this.state.rangeValue[0]}
+        -${this.state.rangeValue[1]}
+    </td>
+  </tr>
+</table>
       </Paper>
     );
   }
