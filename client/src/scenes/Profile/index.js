@@ -12,7 +12,6 @@ import MatchDetails from './components/MatchDetails';
 import fullcalendar from 'fullcalendar';
 import 'fullcalendar-scheduler';
 
-
 const styles = theme => ({
   pageContainer: {
     display: 'flex',
@@ -62,13 +61,12 @@ class MapsPage extends Component {
                 <div className={classes.formContainerRightBottom}>
                   <Grid item>
                       <Paper elevation={4}>
-
                         <div style={{height: 275, paddingTop: 30, paddingLeft:30}}>
-          <Typography variant="title">
-            {translate('profile-page.schedule')}
-          </Typography>
-        </div>
-        <fullcalendar />
+                          <Typography variant="title">
+                            {translate('profile-page.schedule')}
+                          </Typography>
+                          </div>
+                          <fullcalendar />
                       </Paper>
                   </Grid>
                 </div>

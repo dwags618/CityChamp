@@ -81,22 +81,22 @@ class ProfilePicture extends Component {
     const { translate, classes } = this.props;
 
     return (
-       <Paper elevation={4} className={classes.formContainerLeft}>
-          <center>
-            <div>
-              <div className="imgPreview" id="imgPreview">
-                {$imagePreview}
+     <Paper elevation={4} className={classes.formContainerLeft}>
+        <center>
+          <div>
+            <div className="imgPreview" id="imgPreview">
+              {$imagePreview}
+            </div>
+            <img width="200" height="200"  style={{paddingTop:20}} alt={addimage} src={addimage} id="addimage" class="addimage"    />
+              <div>
+                <label for="file-upload" className={classes.customfileupload}>
+                  Upload Image
+                </label>
+                <input id="file-upload" type="file" className={classes.hideButton}  onChange={(e)=>this._handleImageChange(e)} />
               </div>
-              <img width="200" height="200"  style={{paddingTop:20}} alt={addimage} src={addimage} id="addimage" class="addimage"    />
-                <div>
-                  <label for="file-upload" className={classes.customfileupload}>
-                    Upload Image
-                  </label>
-                  <input id="file-upload" type="file" className={classes.hideButton}  onChange={(e)=>this._handleImageChange(e)} />
-                </div>
-              </div>
-          </center>
-        </Paper>
+            </div>
+        </center>
+      </Paper>
     );
   }
 }

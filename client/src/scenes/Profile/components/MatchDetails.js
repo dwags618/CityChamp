@@ -36,40 +36,42 @@ class ProfilePicture extends Component {
     });
   }
 
-
-
   render() {
 
     const { translate, classes } = this.props;
 
     return (
-       <Paper elevation={4} className={classes.formContainerRightTop}>
+     <Paper elevation={4} className={classes.formContainerRightTop}>
        <div style={{paddingTop: 30, paddingLeft:30}}>
           <Typography variant="title">
             {translate('profile-page.match-details')}
           </Typography>
         </div>
+        <div style={{paddingTop: 20, paddingLeft:30}}>
+         <Straighten class="material-icons"/>
+         <a style={{marginLeft: 30}}>Height</a>
+
+         <FitnessCenter class="material-icons-straighten"/>
+         <a style={{marginLeft: 30}}>Weight</a>
+         <div/>
+         <Casino class="material-icons-casino"/>
+         <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} style={{width:150, display: 'inline-block', paddingBottom:25, marginLeft: 30}}/>
           
-          <div style={{paddingTop: 20, paddingLeft:30}}>
-          
-           <Straighten class="material-icons"/>
-           <FitnessCenter class="material-icons-straighten"/>
-           <div/>
-           <Casino class="material-icons-casino"/>
-           <Range allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} style={{width:150, display: 'inline-block', paddingBottom:25, marginLeft: 30}}/>
-          </div>
-          <center>
-            <form onSubmit={this.handleSubmit} >
-              <label>
-                Name:
-                <input type="text" value={this.state.value} onChange={this.handleChange} />
-              </label>
-              <div className={classes.footerContainer}>
-              <input type="submit" value="Submit"  />
-              </div>
-            </form>
-          </center>
-        </Paper>
+        </div>
+        <a style={{marginLeft:150}}>${this.state.rangeValue[0]}</a>
+        <a> - ${this.state.rangeValue[1]}</a>
+        <center>
+          <form onSubmit={this.handleSubmit} >
+            <label>
+              Name:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+            </label>
+            <div className={classes.footerContainer}>
+            <input type="submit" value="Submit"  />
+            </div>
+          </form>
+        </center>
+      </Paper>
     );
   }
 }
