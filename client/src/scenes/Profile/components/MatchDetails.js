@@ -14,9 +14,9 @@ import 'rc-slider/assets/index.css';
 
 const styles = theme => ({
   formContainerRightTop: {
-    height: 275,
-    width: 450,
-    padding: 30
+    height: 200,
+    width: 575,
+    padding: 15
   }
 })
 
@@ -45,7 +45,7 @@ class ProfilePicture extends Component {
      <Paper elevation={4} className={classes.formContainerRightTop}>     
       <table style={{width:350}}>
         <tr>
-          <Typography variant="title" style={{paddingBottom:20}}>
+          <Typography variant="title" style={{paddingBottom:10}}>
             {translate('profile-page.match-details')}
           </Typography>
         </tr>

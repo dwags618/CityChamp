@@ -9,8 +9,11 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import ProfilePicture from './components/ProfilePicture';
 import MatchDetails from './components/MatchDetails';
-import fullcalendar from 'fullcalendar';
-import 'fullcalendar-scheduler';
+import moment from 'moment';
+import BigCalendar from 'react-big-calendar';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+BigCalendar.momentLocalizer(moment)
 
 const styles = theme => ({
   pageContainer: {
@@ -20,7 +23,7 @@ const styles = theme => ({
     margin: '0 auto',
   },
   formContainerRightBottom: {
-    paddingTop:50
+    paddingTop:25
   },
   footerContainer: {
     paddingBottom: 20
@@ -60,13 +63,16 @@ class MapsPage extends Component {
                 <MatchDetails/>
                 <div className={classes.formContainerRightBottom}>
                   <Grid item>
-                      <Paper elevation={4}>
-                        <div style={{height: 275, paddingTop: 30, paddingLeft:30}}>
+                      <Paper elevation={4} style={{width:575, height: 375}}>
+                        <div style={{paddingTop: 15, paddingLeft:30}}>
                           <Typography variant="title">
                             {translate('profile-page.schedule')}
                           </Typography>
                           </div>
-                          <fullcalendar />
+                          <BigCalendar
+                            style={{height: '350px', width: 550, paddingTop:15, paddingLeft:30}}
+                            events={[]}
+                          />
                       </Paper>
                   </Grid>
                 </div>
