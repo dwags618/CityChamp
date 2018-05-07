@@ -47,12 +47,12 @@ const styles = theme => ({
   map: {
     position:'relative', 
     marginTop: 20, 
-    width: 750, 
-    height: 500
+    width: 600, 
+    height: 400
   },
   table: {
     marginTop: 20, 
-    width: 900, 
+    width: 600, 
     height: 350
   },
   contentContainer: {
@@ -194,7 +194,6 @@ class FindMatchPage extends Component {
           <TableHead>
             <TableRow>
               <TableCell>{'Player'}</TableCell>
-              <TableCell>{'Date'}</TableCell>
               <TableCell>{'Time'}</TableCell>
               <TableCell>{'Skill Level'}</TableCell>
               <TableCell>{'Betting'}</TableCell>
@@ -202,31 +201,27 @@ class FindMatchPage extends Component {
           </TableHead>
           <TableRow>
             <TableCell>{'Dylan'}</TableCell>
-              <TableCell>{'Sunday'}</TableCell>
               <TableCell>{'Afternoon'}</TableCell>
               <TableCell>{'Professional'}</TableCell>
               <TableCell>{'$100'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{'Tyler McWilliam'}</TableCell>
-              <TableCell>{'Never'}</TableCell>
               <TableCell>{'4AM'}</TableCell>
               <TableCell>{'Beginner'}</TableCell>
-              <TableCell>{'Performance Improvement Plan'}</TableCell>
+              <TableCell>{'$100'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{'Shelby Powers'}</TableCell>
-              <TableCell>{'Monday'}</TableCell>
               <TableCell>{'Morning'}</TableCell>
               <TableCell>{'Amateur'}</TableCell>
-              <TableCell>{'Moroccan Shoes'}</TableCell>
+              <TableCell>{'$100'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{'Taka'}</TableCell>
-              <TableCell>{'Tuesday'}</TableCell>
               <TableCell>{'Morning'}</TableCell>
               <TableCell>{'Amateur'}</TableCell>
-              <TableCell>{'Chips'}</TableCell>
+              <TableCell>{'$100'}</TableCell>
           </TableRow>
         </Table>
         </div>
