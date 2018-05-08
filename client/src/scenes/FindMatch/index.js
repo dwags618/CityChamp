@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
-import Typography from 'material-ui/Typography';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../redux/navigation';
 import { withStyles } from 'material-ui/styles';
-import {geolocated} from 'react-geolocated';
-import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
+import Table, {TableCell, TableHead, TableRow} from 'material-ui/Table';
 import MapForm from './components/MapForm';
 import Paper from 'material-ui/Paper';
 import DatePicker from 'react-datepicker';
@@ -65,8 +63,6 @@ const styles = theme => ({
     margin: '0 auto',
   },
   datePicker: {
-    border: 0,
-    padding: 8,
     borderRadius: 25,
     borderWidth: 20, 
     border: '#51c4e1',
@@ -147,10 +143,10 @@ class FindMatchPage extends Component {
         <Grid item>
           <center>
             <select value={this.state.value} onChange={this.handleChange} className={classes.dropdown}>
-              <option value="driving">Driving (5 mi.)</option>
-              <option value="biking">Biking (2 mi.)</option>
-              <option value="walking">Walking (1 mi.)</option>
-              <option value="close">Within 4 blocks</option>
+              <option value="driving">{translate('findmatch-page.driving')}</option>
+              <option value="biking">{translate('findmatch-page.biking')}</option>
+              <option value="walking">{translate('findmatch-page.walking')}</option>
+              <option value="close">{translate('findmatch-page.close')}</option>
             </select>
           </center>
         </Grid>

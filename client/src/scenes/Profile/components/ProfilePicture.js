@@ -97,19 +97,19 @@ class ProfilePicture extends Component {
         </center>
         <div style={{paddingLeft:70, paddingTop:20}}>
         <div/>
-        First Name:
+        {translate('profile-picture.first-name')}
         <div/>
         Dylan
         <div style={{paddingTop:20}}/>
-        Last Name:
+        {translate('profile-picture.last-name')}
         <div/>
         Wagner
         <div style={{paddingTop:20}}/>
-        Email Address:
+        {translate('profile-picture.email')}
         <div/>
         dwags618@gmail.com
         <div style={{paddingTop:20}}/>
-        Username:
+        {translate('profile-picture.username')}
         <div/>
         dwags618
         </div>

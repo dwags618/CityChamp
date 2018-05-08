@@ -7,8 +7,18 @@
     "match-details": ["Match Details"],
     "schedule": ["Schedule"]
   },
+  "profile-picture": {
+    "first-name": ["First Name:"],
+    "last-name": ["Last Name:"],
+    "email": ["Email:"],
+    "username": ["Username:"]
+  },
   "findmatch-page": {
-    "title": ["Find Match"]
+    "title": ["Find Match"],
+    "driving": ["Driving (5 mi.)"],
+    "biking": ["Biking (2 mi.)"],
+    "walking":["Walking (1 mi.)"],
+    "close":["Within 4 blocks"]
   },
   "mymatches-page": {
     "title": ["My Matches"]
