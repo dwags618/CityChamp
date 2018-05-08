@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, InfoWindow, Marker} from 'google-maps-react';
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
@@ -43,8 +43,6 @@ class MapForm extends Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak',
-})(withStyles(styles)(MapForm))
+export default withStyles(styles)(MapForm);
 
 
