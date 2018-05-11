@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import { withStyles } from 'material-ui/styles';
 
@@ -10,38 +10,30 @@ const styles = theme => ({
     width: 750, 
     height: 500
   }
-})
+});
 
-class MapForm extends Component {
 
- static defaultProps = {
-    center: {
-      lat: 41.906,
-      lng: -87.63
-    },
-    zoom: 11
-  };
   
-  render() {
 
+let MapForm = (props) => {
+  const { google, latitude, longitude, zoom, onMarkerClick, name, onClose } = props;
     return (
 
-     <Map google={this.props.google}  initialCenter={{
-            lat: 41.906,
-            lng: -87.63
-          }} zoom={14}>
+     <Map google={google}  initialCenter={{
+            lat: latitude, lng: longitude
+          }} zoom={zoom}>
  
-        <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
+        <Marker onClick={onMarkerClick}
+                name={name} />
  
-        <InfoWindow onClose={this.onInfoWindowClose}>
+        <InfoWindow onClose={onClose}>
             <div>
             </div>
         </InfoWindow>
       </Map>
     );
-  }
-}
+  
+};
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak',
