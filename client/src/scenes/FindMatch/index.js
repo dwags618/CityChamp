@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../redux/navigation';
 import { withStyles } from 'material-ui/styles';
 import Table, {TableCell, TableHead, TableRow} from 'material-ui/Table';
-import MapForm from './components/MapForm';
+import MapForm from './components/Geolocated';
 import Paper from 'material-ui/Paper';
 import DatePicker from 'react-datepicker';
 import 'react-week-calendar/dist/style.less';
