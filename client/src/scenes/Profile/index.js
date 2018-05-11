@@ -72,7 +72,7 @@ class MapsPage extends Component {
                           <BigCalendar
                             style={{height: '350px', width: 550, paddingTop:15, paddingLeft:30}}
                             events={[]}
-                            
+                            defaultView="week"
                           />
                       </Paper>
                   </Grid>
