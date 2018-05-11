@@ -11,6 +11,7 @@ import DatePicker from 'react-datepicker';
 import 'react-week-calendar/dist/style.less';
 import Grid from 'material-ui/Grid';
 import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const styles = theme => ({
   input: {
