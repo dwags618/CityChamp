@@ -12,24 +12,23 @@ const styles = theme => ({
   }
 });
 
-
-  
-
 let MapForm = (props) => {
   const { google, latitude, longitude, zoom, onMarkerClick, name, onClose } = props;
     return (
+     <Map google={google}  
+          initialCenter={{
+            lat: latitude, 
+            lng: longitude
+          }} 
+          zoom={zoom}>
+ 
+      <Marker onClick={onMarkerClick}
+              name={name} />
 
-     <Map google={google}  initialCenter={{
-            lat: latitude, lng: longitude
-          }} zoom={zoom}>
- 
-        <Marker onClick={onMarkerClick}
-                name={name} />
- 
-        <InfoWindow onClose={onClose}>
-            <div>
-            </div>
-        </InfoWindow>
+      <InfoWindow onClose={onClose}>
+          <div>
+          </div>
+      </InfoWindow>
       </Map>
     );
   

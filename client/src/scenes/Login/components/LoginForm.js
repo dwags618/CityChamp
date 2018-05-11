@@ -87,12 +87,7 @@ const responseFacebook = (response) => {
     callback={responseFacebook} />
     </div>
       </div>
-        
       </form>
-      
-        
-        
-
     </div>
   );
 };
