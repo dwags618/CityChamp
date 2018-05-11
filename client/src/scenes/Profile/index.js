@@ -70,9 +70,19 @@ class MapsPage extends Component {
                           </Typography>
                           </div>
                           <BigCalendar
-                            style={{height: '350px', width: 550, paddingTop:15, paddingLeft:30}}
+                            selectable
+                            views={['week']}
+                            style={{height: '330px', width: 550, paddingTop:15, paddingLeft:30}}
                             events={[]}
                             defaultView="week"
+                            onSelectEvent={event => alert(event.title)}
+                            onSelectSlot={slotInfo =>
+                              alert(
+                                `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
+                                  `\nend: ${slotInfo.end.toLocaleString()}` +
+                                  `\naction: ${slotInfo.action}`
+                              )
+                            }
                           />
                       </Paper>
                   </Grid>
