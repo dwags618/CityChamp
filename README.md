@@ -1,5 +1,4 @@
-MyCityChamp
-This react application is still in development - it is used to find people to play pick-up games of baskteball in your area. React, Node.js and SQLite are used.
+This application is still in development - it is used to find people to play pick-up games of baskteball in your area. React, Node.js and SQLite are used.
 
 Requirements
 Node JS >= 4 https://nodejs.org/en/
