@@ -3,9 +3,6 @@ This application is still in development - it is used to find people to play pic
 Requirements
 Node JS >= 4 https://nodejs.org/en/
 
-Usage
 Run "npm install" inside the client and server directories to install all dependencies.
 
-Available Commands
-Command	Description
-npm start	Concurrently starts dev server on port 3000.
+Run "npm start" to start dev server on port 3000.
