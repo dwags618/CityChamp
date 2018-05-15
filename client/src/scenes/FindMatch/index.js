@@ -85,12 +85,12 @@ class FindMatchPage extends Component {
 
     // set the initial component state
     this.state = {
-        reviews: '',
+      reviews: '',
       value: '',
       startDate: moment(),
       x: 10,
-    y: 10,
-    rangeValue: [20, 40]
+      y: 10,
+      rangeValue: [20, 40]
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -102,19 +102,14 @@ class FindMatchPage extends Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
+  }
 
-      event.preventDefault();
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
 
-      
-    }
-
-    handleChange(event) {
-
-      this.setState({value: event.target.value});
-
-    }
-
-    handleChange = pos => {
+  handleChange = pos => {
     this.setState({
       x: pos.x,
       y: pos.y
@@ -128,15 +123,13 @@ class FindMatchPage extends Component {
     });
   }
 
- static defaultProps = {
+  static defaultProps = {
     center: {
       lat: 41.906,
       lng: -87.63
     },
     zoom: 11
   };
-
-  
 
   render() {
     const { translate, classes } = this.props;
