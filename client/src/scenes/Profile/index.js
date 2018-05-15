@@ -48,6 +48,18 @@ class MapsPage extends Component {
     this.props.setTitle(this.props.translate('profile-page.title'));
   }
 
+  onNavigate(date, view){
+    console.log('#### onNavigate');
+    console.log('#### date=', date);
+    console.log('#### view=', view);
+    const new_date = moment(date);
+    this.setState({
+      current_date: new_date
+    });
+
+    this.updateTimes(new_date, view);
+  }
+
   render() {
   const { translate, classes } = this.props;
 
@@ -70,12 +82,14 @@ class MapsPage extends Component {
                           </Typography>
                           </div>
                           <BigCalendar
-                            selectable
+                            selectable                         
                             views={['week']}
                             style={{height: '330px', width: 550, paddingTop:15, paddingLeft:30}}
                             events={[]}
                             defaultView="week"
                             onSelectEvent={event => alert(event.title)}
+                                      onNavigate={this.onNavigate}
+
                             onSelectSlot={slotInfo =>
                               alert(
                                 `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +

@@ -51,7 +51,7 @@ class ProfilePicture extends Component {
         </tr>
         <tr>
           <td><Straighten class="material-icons-straighten"/></td>
-          <td>5'10"
+          <td><a>5'10"</a>
           <div/>
           Height
           <div/>
@@ -69,7 +69,7 @@ class ProfilePicture extends Component {
           <div/>
           <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} />
           <div/>
-          {this.state.rangeValue[0]}-${this.state.rangeValue[1]}
+          ${this.state.rangeValue[0]}-${this.state.rangeValue[1]}
           </td>
         </tr>
       </table>
