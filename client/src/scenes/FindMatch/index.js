@@ -30,7 +30,8 @@ const styles = theme => ({
     borderWidth: 2,
     borderColor: '#51c4e1',
     width: 200,
-    height:45
+    height:45,
+    marginRight: 20
   },
   search: {
     borderRadius: 25,
