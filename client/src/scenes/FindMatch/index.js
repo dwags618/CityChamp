@@ -76,7 +76,12 @@ const styles = theme => ({
     width: 200,
     height: 15,
     marginRight: 20,
+    position: 'relative'
   },
+  range: {
+    position: 'relative',
+    width: 200, 
+  }
 })
 
 class FindMatchPage extends Component {
@@ -161,7 +166,7 @@ class FindMatchPage extends Component {
                     />
                   </td>
                   <td>
-                    <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange}/>
+                    <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} className={classes.range}/>
                     ${this.state.rangeValue[0]}-${this.state.rangeValue[1]}  
                   </td>
                 </form> 
