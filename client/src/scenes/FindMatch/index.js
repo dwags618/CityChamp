@@ -41,11 +41,6 @@ const styles = theme => ({
     height: 45,
     color: 'white'
   },
-  filter: {
-    position:'relative', 
-    marginTop: 20, 
-    marginLeft: -100, 
-  },
   map: {
     position:'relative', 
     marginTop: 20, 
