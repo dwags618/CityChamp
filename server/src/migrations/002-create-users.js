@@ -20,6 +20,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      minimumBet: {
+        type: Sequelize.INTEGER
+      },
+      maximumBet: {
+        type: Sequelize.INTEGER
+      },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE
     })
