@@ -16,6 +16,14 @@ export default (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    minimumBet: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    maximumBet: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
 
