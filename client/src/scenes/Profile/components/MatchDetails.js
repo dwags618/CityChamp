@@ -17,6 +17,10 @@ const styles = theme => ({
     height: 200,
     width: 575,
     padding: 15
+  },
+  save: {
+    marginLeft: 250,
+    position: 'absolute'
   }
 })
 
@@ -43,7 +47,7 @@ class ProfilePicture extends Component {
 
     return (
      <Paper elevation={4} className={classes.formContainerRightTop}>     
-      <table style={{width:350}}>
+      <table style={{width:350, height: 150}}>
         <tr>
           <Typography variant="title" style={{paddingBottom:10}}>
             {translate('profile-page.match-details')}
@@ -62,6 +66,7 @@ class ProfilePicture extends Component {
           Weight
           <div/>
           </td>
+
         </tr>
         <tr>
           <td><Casino class="material-icons-straighten" style={{marginTop:30}}/></td>
@@ -71,8 +76,12 @@ class ProfilePicture extends Component {
           <div/>
           ${this.state.rangeValue[0]}-${this.state.rangeValue[1]}
           </td>
+          <td>
+          <button onClick={this.save} className={classes.save}>Save</button>
+          </td>
         </tr>
       </table>
+      
     </Paper>
     );
   }
