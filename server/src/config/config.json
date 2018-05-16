@@ -1,7 +1,7 @@
 {
   "development": {
     "dialect": "sqlite",
-    "storage": "./tmp/db.development.sqlite",
+    "storage": "./src/db/db.development.sqlite",
     "logging": true,
     "tokenSecret": "iHaveASecret"
   },
