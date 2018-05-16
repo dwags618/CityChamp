@@ -17,7 +17,9 @@ module.exports = new PassportLocalStrategy({
   const userData = {
     username: req.body.username,
     name: req.body.name,
-    password: hash
+    password: hash,
+    minimumBet: '',
+    maximumBet: ''
   };
 
   models.User.findOne({
