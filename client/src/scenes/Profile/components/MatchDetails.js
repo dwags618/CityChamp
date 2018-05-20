@@ -11,6 +11,8 @@ import Straighten from 'material-ui-icons/Straighten';
 import "./style.css";
 import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import {saveBetAmount} from '../../../services/api/auth';
+import { Button } from 'reactstrap';
 
 const styles = theme => ({
   formContainerRightTop: {
@@ -30,8 +32,16 @@ class ProfilePicture extends Component {
     super(props);
     this.state = {
       value: '',
-      rangeValue: [20, 40]
+      rangeValue: [20, 40],
+      username: ''
     };
+
+    this.save = this.save.bind(this);
+  }
+
+  componentDidMount() {
+    
+    this.setState({ username: localStorage.getItem('username') })
   }
 
   onSliderChange = (rangeValue) => {
@@ -39,6 +49,11 @@ class ProfilePicture extends Component {
     this.setState({
       rangeValue,
     });
+  };
+
+  save() { 
+    alert(this.state.username)
+
   }
 
   render() {
@@ -46,6 +61,7 @@ class ProfilePicture extends Component {
     const { translate, classes } = this.props;
 
     return (
+
      <Paper elevation={4} className={classes.formContainerRightTop}>     
       <table style={{width:350, height: 150}}>
         <tr>
