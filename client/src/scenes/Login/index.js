@@ -89,11 +89,6 @@ class LoginPage extends Component {
       });
   }
 
-  componentDidMount() {
-    this.props.setTitle(this.props.translate('login-page.title'));
-    window.setTimeout(this.toggle, 3200) 
-  }
-
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     const { redirectToReferrer } = this.state;
@@ -131,15 +126,8 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setTitle: (title) => {
-      dispatch(setTitle(title));
-    }
-  };
-};
+
 
 export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(withStyles(styles)(LoginPage)));
