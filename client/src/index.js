@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import { initialize, addTranslation, localeReducer as locale } from 'react-localize-redux';
 import navigation from './redux/navigation';
 import App from './scenes/App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const rootReducer = combineReducers({
   'navigation': navigation,
