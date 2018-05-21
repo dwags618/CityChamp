@@ -123,12 +123,7 @@ class FindMatchPage extends Component {
     this.setState({value: event.target.value});
   }
 
-  handleChange = pos => {
-    this.setState({
-      x: pos.x,
-      y: pos.y
-    });
-  };
+
 
   onSliderChange = (rangeValue) => {
     this.setState({
