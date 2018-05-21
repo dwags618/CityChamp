@@ -29,9 +29,8 @@ passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);
 passport.use('local-reset', localResetStrategy);
 
-
-app.use('/api', authCheckMiddleware);
 app.use('/api', routes);
+app.use('/api', authCheckMiddleware);
 app.use('/auth', authRoutes);
 
 if ('production' == env) {
