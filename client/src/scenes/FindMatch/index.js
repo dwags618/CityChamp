@@ -91,7 +91,10 @@ class FindMatchPage extends Component {
       startDate: moment(),
       x: 10,
       y: 10,
-      rangeValue: [20, 40]
+      rangeValue: [20, 40],
+      showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {},
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -131,6 +134,15 @@ class FindMatchPage extends Component {
     });
   }
 
+   onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+
+
   render() {
     const { translate, classes } = this.props;
     return (
@@ -166,7 +178,8 @@ class FindMatchPage extends Component {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <div className={classes.map}>
-                  <MapForm/>
+                  <MapForm
+                  />
                 </div>
               </Grid>
               <Grid item xs={12} sm={6}>

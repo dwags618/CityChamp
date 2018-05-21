@@ -37,5 +37,3 @@ let MapForm = (props) => {
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak',
 })(withStyles(styles)(MapForm))
-
-
