@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../redux/navigation';
 import { withStyles } from 'material-ui/styles';
-import Table, {TableCell, TableHead, TableRow} from 'material-ui/Table';
 import MapForm from './components/Geolocated';
 import DatePicker from 'react-datepicker';
 import 'react-week-calendar/dist/style.less';
@@ -13,6 +12,11 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import {getPlayers} from '../../services/api/matchdetails';
+import Geocoder from 'react-native-geocoding';
+import UserTable from './components/UserTable';
+
+Geocoder.init('AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak'); // use a valid API key
 
 
 const styles = theme => ({
@@ -79,6 +83,14 @@ const styles = theme => ({
   }
 })
 
+Geocoder.from("1355 N. Sandburg Terrace Chicago, IL")
+        .then(json => {
+            var location = json.results[0].geometry.location;
+            console.log(location);
+        })
+        .catch(error => console.warn(error));
+
+
 class FindMatchPage extends Component {
 
   constructor(props, context) {
@@ -92,17 +104,23 @@ class FindMatchPage extends Component {
       x: 10,
       y: 10,
       rangeValue: [20, 40],
+            users: null,
+
 
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeStartDate = this.handleChangeStartDate.bind(this);
+        this.getAllUsers = this.getAllUsers.bind(this);
+
 
   }
 
   componentDidMount() {
     this.props.setTitle(this.props.translate('findmatch-page.title'));
+        this.getAllUsers();
+
 
   }
 
@@ -128,9 +146,22 @@ class FindMatchPage extends Component {
     });
   }
 
+    getAllUsers(key) {
+    getPlayers()
+      .then(result => result.json())
+      .then(data => {
+        this.setState({users: data.users});
+        console.log(data.users)
+      })
+      .catch(err => {
+
+      });
+  }
+
 
 
   render() {
+    console.log(this.state.users)
     const { translate, classes } = this.props;
     return (
       <div className={classes.pageContainer}>
@@ -140,7 +171,7 @@ class FindMatchPage extends Component {
               <Grid item xs={12}>
                 <form onSubmit={this.handleSubmit}>
                   <td>
-                    <input type="text" className={classes.input} placeholder={"Zip Code"}></input>
+                    <input type="text" className={classes.input} placeholder={"Address"}></input>
                   </td>
                   <td>
                     <select value={this.state.value} onChange={this.handleChange} className={classes.dropdown}>
@@ -161,6 +192,9 @@ class FindMatchPage extends Component {
                     <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} className={classes.range}/>
                     ${this.state.rangeValue[0]}-${this.state.rangeValue[1]}  
                   </td>
+                  <td>
+                  <input type="submit" value="Submit" />
+                  </td>
                 </form> 
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -171,40 +205,7 @@ class FindMatchPage extends Component {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <div className={classes.table}>
-                  <Table>
-                    <TableHead>
-                    <TableRow>
-                      <TableCell>{'Player'}</TableCell>
-                      <TableCell>{'Time'}</TableCell>
-                      <TableCell>{'Skill Level'}</TableCell>
-                      <TableCell>{'Betting'}</TableCell>
-                    </TableRow>
-                    </TableHead>
-                    <TableRow>
-                      <TableCell>{'Dylan'}</TableCell>
-                        <TableCell>{'Afternoon'}</TableCell>
-                        <TableCell>{'Professional'}</TableCell>
-                        <TableCell>{'$100'}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>{'Tyler McWilliam'}</TableCell>
-                        <TableCell>{'4AM'}</TableCell>
-                        <TableCell>{'Beginner'}</TableCell>
-                        <TableCell>{'$100'}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>{'Shelby Powers'}</TableCell>
-                        <TableCell>{'Morning'}</TableCell>
-                        <TableCell>{'Amateur'}</TableCell>
-                        <TableCell>{'$100'}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>{'Taka'}</TableCell>
-                        <TableCell>{'Morning'}</TableCell>
-                        <TableCell>{'Amateur'}</TableCell>
-                        <TableCell>{'$100'}</TableCell>
-                    </TableRow>
-                  </Table>
+                  <UserTable/>
                 </div>
               </Grid>
             </Grid>
