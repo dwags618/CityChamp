@@ -92,16 +92,13 @@ class FindMatchPage extends Component {
       x: 10,
       y: 10,
       rangeValue: [20, 40],
-      showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {},
+
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeStartDate = this.handleChangeStartDate.bind(this);
-  this.onMarkerClick = this.onMarkerClick.bind(this);
-    this.onMapClick = this.onMapClick.bind(this);
+
   }
 
   componentDidMount() {
@@ -131,21 +128,7 @@ class FindMatchPage extends Component {
     });
   }
 
-   onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
 
-onMapClick = (props) => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  }
 
   render() {
     const { translate, classes } = this.props;
