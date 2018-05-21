@@ -96,10 +96,18 @@ class FindMatchPage extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeStartDate = this.handleChangeStartDate.bind(this);
   }
 
   componentDidMount() {
     this.props.setTitle(this.props.translate('findmatch-page.title'));
+
+  }
+
+  handleChangeStartDate = (date) => {
+    this.setState({
+      startDate: date
+    });
   }
 
   handleSubmit(event) {
@@ -118,23 +126,13 @@ class FindMatchPage extends Component {
   };
 
   onSliderChange = (rangeValue) => {
-    console.log(rangeValue);
     this.setState({
       rangeValue,
     });
   }
 
-  static defaultProps = {
-    center: {
-      lat: 41.906,
-      lng: -87.63
-    },
-    zoom: 11
-  };
-
   render() {
     const { translate, classes } = this.props;
-
     return (
       <div className={classes.pageContainer}>
         <div className={classes.contentContainer}>
@@ -156,7 +154,7 @@ class FindMatchPage extends Component {
                   <td>
                     <DatePicker
                     className={classes.datePicker}
-                    selected={moment(this.state.startDate)}
+                    selected={this.state.startDate}
                     onChange={this.handleChangeStartDate}
                     />
                   </td>
