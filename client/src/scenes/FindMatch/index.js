@@ -18,7 +18,6 @@ import UserTable from './components/UserTable';
 
 Geocoder.init('AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak'); // use a valid API key
 
-
 const styles = theme => ({
   input: {
     borderRadius: 25,
@@ -96,7 +95,6 @@ class FindMatchPage extends Component {
   constructor(props, context) {
     super(props, context);
 
-    // set the initial component state
     this.state = {
       reviews: '',
       value: '',
@@ -104,24 +102,19 @@ class FindMatchPage extends Component {
       x: 10,
       y: 10,
       rangeValue: [20, 40],
-            users: null,
-
-
+      users: null,
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeStartDate = this.handleChangeStartDate.bind(this);
-        this.getAllUsers = this.getAllUsers.bind(this);
-
+    this.getAllUsers = this.getAllUsers.bind(this);
 
   }
 
   componentDidMount() {
     this.props.setTitle(this.props.translate('findmatch-page.title'));
-        this.getAllUsers();
-
-
+    this.getAllUsers();
   }
 
   handleChangeStartDate = (date) => {
@@ -138,15 +131,13 @@ class FindMatchPage extends Component {
     this.setState({value: event.target.value});
   }
 
-
-
   onSliderChange = (rangeValue) => {
     this.setState({
       rangeValue,
     });
   }
 
-    getAllUsers(key) {
+  getAllUsers(key) {
     getPlayers()
       .then(result => result.json())
       .then(data => {
@@ -157,8 +148,6 @@ class FindMatchPage extends Component {
 
       });
   }
-
-
 
   render() {
     console.log(this.state.users)
@@ -193,7 +182,7 @@ class FindMatchPage extends Component {
                     ${this.state.rangeValue[0]}-${this.state.rangeValue[1]}  
                   </td>
                   <td>
-                  <input type="submit" value="Submit" />
+                  <input type="submit" value="Submit" className={classes.search}/>
                   </td>
                 </form> 
               </Grid>
