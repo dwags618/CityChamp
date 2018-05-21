@@ -11,8 +11,10 @@ import Straighten from 'material-ui-icons/Straighten';
 import "./style.css";
 import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import {saveBetAmount} from '../../../services/api/auth';
+import {saveBetAmount} from '../../../services/api/matchdetails';
 import { Button } from 'reactstrap';
+import {resetUser} from '../../../services/api/auth';
+
 
 const styles = theme => ({
   formContainerRightTop: {
@@ -32,28 +34,45 @@ class ProfilePicture extends Component {
     super(props);
     this.state = {
       value: '',
-      rangeValue: [20, 40],
-      username: ''
+      user: {
+        username: '',
+        rangeValue: [20,40]
+      }
     };
 
     this.save = this.save.bind(this);
   }
 
   componentDidMount() {
-    
-    this.setState({ username: localStorage.getItem('username') })
+    this.setState({
+      user: {
+        username: localStorage.getItem('username'),
+        rangeValue: [20, 40]
+      }
+    });
   }
+  
 
   onSliderChange = (rangeValue) => {
     console.log(rangeValue);
     this.setState({
-      rangeValue,
+      user: {
+        rangeValue: rangeValue
+      }
     });
-  };
+  }
 
-  save() { 
-    alert(this.state.username)
+  save() {
+    
+    
 
+    var errors = {};
+
+    saveBetAmount(this.state.user)
+      .then(result => result.json())
+      .then(data => {
+      console.log(data)
+      });
   }
 
   render() {
@@ -88,9 +107,8 @@ class ProfilePicture extends Component {
           <td><Casino class="material-icons-straighten" style={{marginTop:30}}/></td>
           <td>Betting Amount
           <div/>
-          <Range step={5} allowCross={false} value={this.state.rangeValue} onChange={this.onSliderChange} />
+          <Range step={5} allowCross={false} value={this.state.user.rangeValue} onChange={this.onSliderChange} />
           <div/>
-          ${this.state.rangeValue[0]}-${this.state.rangeValue[1]}
           </td>
           <td>
           <button onClick={this.save} className={classes.save}>Save</button>
