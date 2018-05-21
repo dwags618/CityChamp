@@ -96,7 +96,7 @@ class ProfilePicture extends Component {
           ${this.state.user.rangeValue[0]}-${this.state.user.rangeValue[1]}
           </td>
           <td>
-          <button onClick={this.save} className={classes.save}>Save</button>
+          <Button onClick={this.save} className={classes.save}>Save</Button>
           </td>
         </tr>
       </table>
