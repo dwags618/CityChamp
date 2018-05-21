@@ -6,7 +6,6 @@ import { setTitle } from '../../redux/navigation';
 import { withStyles } from 'material-ui/styles';
 import Table, {TableCell, TableHead, TableRow} from 'material-ui/Table';
 import MapForm from './components/Geolocated';
-import Paper from 'material-ui/Paper';
 import DatePicker from 'react-datepicker';
 import 'react-week-calendar/dist/style.less';
 import Grid from 'material-ui/Grid';
@@ -14,6 +13,7 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
+
 
 const styles = theme => ({
   input: {
@@ -100,6 +100,8 @@ class FindMatchPage extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeStartDate = this.handleChangeStartDate.bind(this);
+  this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.onMapClick = this.onMapClick.bind(this);
   }
 
   componentDidMount() {
@@ -141,7 +143,14 @@ class FindMatchPage extends Component {
       showingInfoWindow: true
     });
 
-
+onMapClick = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  }
 
   render() {
     const { translate, classes } = this.props;
@@ -179,6 +188,12 @@ class FindMatchPage extends Component {
               <Grid item xs={12} sm={6}>
                 <div className={classes.map}>
                   <MapForm
+                  position={{ lat: 39.648209, lng: -75.711185 }}
+                  name={'Dolores Park'}
+                  title={'Dolor'}
+                  onMarkerClick={this.onMarkerClick}
+                  activeMarker={this.activeMarker}
+                  showingInfoWindow={this.showingInfoWindow}
                   />
                 </div>
               </Grid>

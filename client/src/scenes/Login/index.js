@@ -3,7 +3,6 @@ import { withStyles } from 'material-ui/styles';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
-import { setTitle } from '../../redux/navigation';
 import Auth from '../../services/auth';
 import LoginForm from './components/LoginForm';
 import MyCityChampLogo from '../../images/MCC_logo.png';
