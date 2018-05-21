@@ -13,8 +13,6 @@ import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import {saveBetAmount} from '../../../services/api/matchdetails';
 import { Button } from 'reactstrap';
-import {resetUser} from '../../../services/api/auth';
-
 
 const styles = theme => ({
   formContainerRightTop: {
@@ -35,32 +33,22 @@ class ProfilePicture extends Component {
     this.state = {
       value: '',
       user: {
-        username: '',
-        rangeValue: [20,40]
+        rangeValue: [20, 40],
+        username: localStorage.getItem('username')
       }
     };
 
     this.save = this.save.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({
-      user: {
-        username: localStorage.getItem('username'),
-        rangeValue: [20, 40]
-      }
-    });
-  }
-  
-
   onSliderChange = (rangeValue) => {
     console.log(rangeValue);
     this.setState({
-      user: {
-        rangeValue: rangeValue
-      }
+      user:{
+      rangeValue,
+      username: localStorage.getItem('username')}
     });
-  }
+  };
 
   save() {
     
@@ -109,6 +97,7 @@ class ProfilePicture extends Component {
           <div/>
           <Range step={5} allowCross={false} value={this.state.user.rangeValue} onChange={this.onSliderChange} />
           <div/>
+          ${this.state.user.rangeValue[0]}-${this.state.user.rangeValue[1]}
           </td>
           <td>
           <button onClick={this.save} className={classes.save}>Save</button>
