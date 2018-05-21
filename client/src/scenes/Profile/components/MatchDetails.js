@@ -51,9 +51,7 @@ class ProfilePicture extends Component {
   };
 
   save() {
-    
-    
-
+  
     var errors = {};
 
     saveBetAmount(this.state.user)
