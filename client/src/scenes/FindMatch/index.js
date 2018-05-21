@@ -183,12 +183,6 @@ onMapClick = (props) => {
               <Grid item xs={12} sm={6}>
                 <div className={classes.map}>
                   <MapForm
-                  position={{ lat: 39.648209, lng: -75.711185 }}
-                  name={'Dolores Park'}
-                  title={'Dolor'}
-                  onMarkerClick={this.onMarkerClick}
-                  activeMarker={this.activeMarker}
-                  showingInfoWindow={this.showingInfoWindow}
                   />
                 </div>
               </Grid>
