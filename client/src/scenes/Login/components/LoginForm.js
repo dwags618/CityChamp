@@ -35,9 +35,9 @@ const styles = theme => ({
 
 let LoginForm = (props) => {
   const { classes, translate, onChange, onSubmit, user, errors, message } = props;
-const responseFacebook = (response) => {
-  console.log(response);
-}
+  const responseFacebook = (response) => {
+    console.log(response);
+  }
   return (
     <div>
       <form

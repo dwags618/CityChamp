@@ -93,8 +93,6 @@ class LoginPage extends Component {
     const { redirectToReferrer } = this.state;
     const { translate, classes } = this.props;
 
-   
-   
       if (redirectToReferrer) {
         return (
           <Redirect to={from}/>
@@ -124,8 +122,6 @@ const mapStateToProps = state => {
     currentLangugage: getActiveLanguage(state.get('locale')).code
   };
 };
-
-
 
 export default withRouter(connect(
   mapStateToProps
