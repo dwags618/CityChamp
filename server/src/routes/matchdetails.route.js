@@ -20,9 +20,9 @@ export const user_list = (req, res) => {
   models.User.findAll({
 
   })
-    .then((sites) => {
+    .then((users) => {
       var response = {};
-      response['sites'] = sites;
+      response['users'] = users;
       return response;
     })
     .then(ok(res))
