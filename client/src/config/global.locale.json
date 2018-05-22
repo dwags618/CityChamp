@@ -18,7 +18,11 @@
     "driving": ["Driving (5 mi.)"],
     "biking": ["Biking (2 mi.)"],
     "walking":["Walking (1 mi.)"],
-    "close":["Within 4 blocks"]
+    "close":["Within 4 blocks"],
+    "name": ["Name"],
+    "username": ["Username"],
+    "minimum-bet": ["Minimum Bet"],
+    "maximum-bet": ["Maximum Bet"]
   },
   "mymatches-page": {
     "title": ["My Matches"]
