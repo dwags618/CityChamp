@@ -12,9 +12,9 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import {getPlayers} from '../../services/api/matchdetails';
+import { getPlayers } from '../../services/api/matchdetails';
 import Geocoder from 'react-native-geocoding';
-import UserTable from './components/UserTable';
+import SimpleUserReportTable from './components/SimpleUserReportTable';
 
 Geocoder.init('AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak'); // use a valid API key
 
@@ -52,7 +52,6 @@ const styles = theme => ({
     paddingRight: 50
   },
   table: {
-    marginTop: 20, 
     width: 600, 
     height: 350,
     paddingLeft: 50
@@ -102,14 +101,25 @@ class FindMatchPage extends Component {
       x: 10,
       y: 10,
       rangeValue: [20, 40],
-      users: null,
+      users: [],
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeStartDate = this.handleChangeStartDate.bind(this);
     this.getAllUsers = this.getAllUsers.bind(this);
+  }
 
+  getAllUsers(key) {
+    getPlayers()
+      .then(result => result.json())
+      .then(data => {
+        this.setState({users: data.users});
+
+      })
+      .catch(err => {
+
+      });
   }
 
   componentDidMount() {
@@ -135,18 +145,6 @@ class FindMatchPage extends Component {
     this.setState({
       rangeValue,
     });
-  }
-
-  getAllUsers(key) {
-    getPlayers()
-      .then(result => result.json())
-      .then(data => {
-        this.setState({users: data.users});
-        console.log(data.users)
-      })
-      .catch(err => {
-
-      });
   }
 
   render() {
@@ -188,13 +186,20 @@ class FindMatchPage extends Component {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <div className={classes.map}>
-                  <MapForm
-                  />
+                  <MapForm/>
                 </div>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <div className={classes.table}>
-                  <UserTable/>
+                 <SimpleUserReportTable
+                  users={this.state.users}
+                  {...translate([
+                    'findmatch-page.name',
+                    'findmatch-page.username',
+                    'findmatch-page.minimum-bet',
+                    'findmatch-page.maximum-bet'
+                  ])}
+                  />
                 </div>
               </Grid>
             </Grid>
