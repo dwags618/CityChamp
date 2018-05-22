@@ -82,11 +82,11 @@ const styles = theme => ({
 })
 
 Geocoder.from("1355 N. Sandburg Terrace Chicago, IL")
-        .then(json => {
-            var location = json.results[0].geometry.location;
-            console.log(location);
-        })
-        .catch(error => console.warn(error));
+  .then(json => {
+    var location = json.results[0].geometry.location;
+    console.log(location);
+  })
+  .catch(error => console.warn(error));
 
 
 class FindMatchPage extends Component {
@@ -193,6 +193,8 @@ class FindMatchPage extends Component {
                 <div className={classes.table}>
                  <SimpleUserReportTable
                   users={this.state.users}
+                  minimumBet={this.state.rangeValue[0]}
+                  maximumBet={this.state.rangeValue[1]}
                   {...translate([
                     'findmatch-page.name',
                     'findmatch-page.username',
@@ -229,7 +231,3 @@ export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
 )(withStyles(styles)(FindMatchPage)));
-
-
-
-

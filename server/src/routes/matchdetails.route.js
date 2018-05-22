@@ -4,7 +4,7 @@ import {Op} from 'sequelize';
 import models from '../models';
 
 export const bet_update = (req, res) => {
-
+ 
  models.User.update({minimumBet: req.body.rangeValue[0], maximumBet: req.body.rangeValue[1]}, {where: {username: req.body.username}})
  .then((sites) => {
   var response = sites;
@@ -12,13 +12,11 @@ export const bet_update = (req, res) => {
  })
  .then(ok(res))
  .catch(badRequest(res));
-    
 }
 
 export const user_list = (req, res) => {
 
   models.User.findAll({
-
   })
     .then((users) => {
       var response = {};
@@ -27,7 +25,6 @@ export const user_list = (req, res) => {
     })
     .then(ok(res))
     .catch(badRequest(res));
-    
 }
 
 const router = new Router();

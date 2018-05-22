@@ -16,11 +16,15 @@ const styles = theme => ({
   }
 });
 
-const TableItems = (classes, props, users) => {
+const TableItems = (classes, props, users, minimumBet, maximumBet) => {
   var output = [];
   for (var user in users) {
     var n = users[user];
 
+    console.log(minimumBet)
+    console.log(maximumBet)
+
+    if((n.minimumBet >= minimumBet && n.minimumBet <=maximumBet) || (n.maximumBet >=minimumBet && n.maximumBet <=maximumBet))
     output.push(
       <TableRow key={user}>
         <TableCell>{n.name}</TableCell>
@@ -35,7 +39,7 @@ const TableItems = (classes, props, users) => {
 };
 
 const SimpleUserReportTable = props => {
-  const {classes, users} = props;
+  const {classes, users, minimumBet, maximumBet} = props;
 
   const message = (messageText) => (
     <Typography variant="display1" align="center" className={classes.messageText}>
@@ -46,10 +50,10 @@ const SimpleUserReportTable = props => {
   if (users === null) {
     return message('Loading...');
   } else if (users.length === 0) {
-    return message('No test results to display');
+    return message('No results to display');
   } else {
     return (
-      <div style={{paddingTop:30}}>
+      <div style={{paddingTop:20}}>
       <Paper elevation={4} className={classes.paper}>
         <Table>
           <TableHead>
@@ -61,7 +65,7 @@ const SimpleUserReportTable = props => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {TableItems(classes, props, users)}
+            {TableItems(classes, props, users, minimumBet, maximumBet)}
           </TableBody>
         </Table>
       </Paper>
