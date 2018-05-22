@@ -12,6 +12,7 @@
   "dependencies": {
     "fullcalendar": "^3.9.0",
     "fullcalendar-scheduler": "^1.9.4",
-    "npm": "^6.0.0"
+    "npm": "^6.0.0",
+    "react-table": "^6.8.5"
   }
 }
