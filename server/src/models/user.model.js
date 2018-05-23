@@ -24,6 +24,10 @@ export default (sequelize, DataTypes) => {
     maximumBet: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
 
