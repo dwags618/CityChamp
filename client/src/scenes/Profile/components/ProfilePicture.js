@@ -6,6 +6,8 @@ import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import addimage from './blank-profile-picture.png';
 import $ from 'jquery';
+import { getPlayers } from '../../../services/api/matchdetails';
+import SingleUserReportTable from './SingleUserReportTable';
 
 const styles = theme => ({
   hideButton: {
@@ -47,8 +49,28 @@ class ProfilePicture extends Component {
     this.state = {
       file: '',
       imagePreviewUrl: '',
-      value: ''
+      value: '',
+            users: [],
+
     };
+        this.getAllUsers = this.getAllUsers.bind(this);
+
+  }
+
+  getAllUsers(key) {
+    getPlayers()
+      .then(result => result.json())
+      .then(data => {
+        this.setState({users: data.users});
+
+      })
+      .catch(err => {
+
+      });
+  }
+
+  componentDidMount() {
+    this.getAllUsers();
   }
 
   _handleImageChange(e) {
@@ -96,22 +118,16 @@ class ProfilePicture extends Component {
             </div>
         </center>
         <div style={{paddingLeft:70, paddingTop:20}}>
-        <div/>
-        {translate('profile-picture.first-name')}
-        <div/>
-        Dylan
-        <div style={{paddingTop:20}}/>
-        {translate('profile-picture.last-name')}
-        <div/>
-        Wagner
-        <div style={{paddingTop:20}}/>
-        {translate('profile-picture.email')}
-        <div/>
-        dwags618@gmail.com
-        <div style={{paddingTop:20}}/>
-        {translate('profile-picture.username')}
-        <div/>
-        dwags618
+       <SingleUserReportTable
+                  users={this.state.users}
+                 
+                  {...translate([
+                    'findmatch-page.name',
+                    'findmatch-page.username',
+                    'findmatch-page.minimum-bet',
+                    'findmatch-page.maximum-bet'
+                  ])}
+                  />
         </div>
       </Paper>
     );
