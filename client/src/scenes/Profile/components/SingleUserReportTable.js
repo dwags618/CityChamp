@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
+import Table, {TableBody, TableRow} from 'material-ui/Table';
 
 const styles = theme => ({
   messageText: {
@@ -16,11 +16,12 @@ const styles = theme => ({
   }
 });
 
-const TableItems = (classes, props, users) => {
+const TableItems = (classes, props, users, username) => {
   var output = [];
   for (var user in users) {
     var n = users[user];
 
+    if(n.username===username)
     output.push(
       <TableRow key={user}>
         <TableRow>{n.name}</TableRow>
@@ -28,12 +29,11 @@ const TableItems = (classes, props, users) => {
       </TableRow>
     );
   }
-
   return output;
 };
 
 const SingleUserReportTable = props => {
-  const {classes, users } = props;
+  const {classes, users, username } = props;
 
   const message = (messageText) => (
     <Typography variant="display1" align="center" className={classes.messageText}>
@@ -51,7 +51,7 @@ const SingleUserReportTable = props => {
       <Paper elevation={4} className={classes.paper}>
         <Table>
           <TableBody>
-            {TableItems(classes, props, users)}
+            {TableItems(classes, props, users, username)}
           </TableBody>
         </Table>
       </Paper>

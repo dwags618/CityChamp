@@ -50,11 +50,11 @@ class ProfilePicture extends Component {
       file: '',
       imagePreviewUrl: '',
       value: '',
-            users: [],
-
+      users: [],
+      username: ''
     };
-        this.getAllUsers = this.getAllUsers.bind(this);
-
+    
+    this.getAllUsers = this.getAllUsers.bind(this);
   }
 
   getAllUsers(key) {
@@ -70,6 +70,9 @@ class ProfilePicture extends Component {
   }
 
   componentDidMount() {
+    this.setState({
+      username: localStorage.getItem('username')
+    });
     this.getAllUsers();
   }
 
@@ -87,19 +90,18 @@ class ProfilePicture extends Component {
             imagePreviewUrl: reader.result
         });
     }
-
     reader.readAsDataURL(file)
-
   }
 
   render() {
+    console.log(this.state.username)
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
       $imagePreview = (<div><img src={imagePreviewUrl} alt={imagePreviewUrl} width={200} height={200} style={{paddingTop:20}} /></div>);
     } 
 
-    const { translate, classes } = this.props;
+    const { classes } = this.props;
 
     return (
      <Paper elevation={4} className={classes.formContainerLeft}>
@@ -118,16 +120,10 @@ class ProfilePicture extends Component {
             </div>
         </center>
         <div style={{paddingLeft:70, paddingTop:20}}>
-       <SingleUserReportTable
-                  users={this.state.users}
-                 
-                  {...translate([
-                    'findmatch-page.name',
-                    'findmatch-page.username',
-                    'findmatch-page.minimum-bet',
-                    'findmatch-page.maximum-bet'
-                  ])}
-                  />
+          <SingleUserReportTable
+            users={this.state.users}
+            username={this.state.username}
+          />
         </div>
       </Paper>
     );
