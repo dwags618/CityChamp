@@ -22,6 +22,7 @@ const styles = theme => ({
   },
   save: {
     marginLeft: 250,
+    marginBottom: 100,
     position: 'absolute'
   }
 })

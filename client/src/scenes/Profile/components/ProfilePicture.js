@@ -48,10 +48,13 @@ class ProfilePicture extends Component {
     super(props);
     this.state = {
       file: '',
-      imagePreviewUrl: '',
+    
       value: '',
       users: [],
-      username: ''
+      user: {
+        username: '',
+        imagePreviewUrl:''
+      }
     };
     
     this.getAllUsers = this.getAllUsers.bind(this);
@@ -71,7 +74,10 @@ class ProfilePicture extends Component {
 
   componentDidMount() {
     this.setState({
-      username: localStorage.getItem('username')
+      user: {
+        username: localStorage.getItem('username'),
+        imagePreviewUrl: ''
+      }
     });
     this.getAllUsers();
   }
@@ -87,14 +93,19 @@ class ProfilePicture extends Component {
     reader.onloadend = () => {
         this.setState({
             file: file,
-            imagePreviewUrl: reader.result
+            user: {
+            imagePreviewUrl: reader.result,
+            username: localStorage.getItem('username'),
+          }
         });
     }
     reader.readAsDataURL(file)
   }
 
   render() {
-    console.log(this.state.username)
+    console.log(this.state.user.username)
+    console.log(this.state.file)
+    console.log(this.state.user.imagePreviewUrl)
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
@@ -122,7 +133,7 @@ class ProfilePicture extends Component {
         <div style={{paddingLeft:70, paddingTop:20}}>
           <SingleUserReportTable
             users={this.state.users}
-            username={this.state.username}
+            username={this.state.user.username}
           />
         </div>
       </Paper>
