@@ -14,6 +14,7 @@ class Geolocated extends Component {
     // binding this to event-handler functions
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClick = this.onMapClick.bind(this);
+    console.log(this.props.coords)
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -31,6 +32,7 @@ class Geolocated extends Component {
       });
     }
   }
+
   
   render() {
     return (

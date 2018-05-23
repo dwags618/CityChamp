@@ -16,6 +16,14 @@ export const saveImage = (params) => {
   });
 }
 
+export const saveCoordinates = (params) => {
+  return fetch('/api/matchdetails/coordinates', {
+    method: 'PUT',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(params)
+  });
+}
+
 export const getPlayers = () => {
   return fetch('/api/matchdetails', {
     headers: {

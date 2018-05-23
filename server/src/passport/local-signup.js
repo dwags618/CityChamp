@@ -20,7 +20,9 @@ module.exports = new PassportLocalStrategy({
     password: hash,
     minimumBet: '',
     maximumBet: '',
-    image: ''
+    image: '',
+    latitude: '',
+    longitude: ''
   };
 
   models.User.findOne({

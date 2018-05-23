@@ -25,6 +25,17 @@ export const save_image = (req, res) => {
  .catch(badRequest(res));
 }
 
+export const save_coordinates = (req, res) => {
+ 
+ models.User.update({latitude: req.body.latitude, longitude: req.body.longitude}, {where: {username: req.body.username}})
+ .then((sites) => {
+  var response = sites;
+  return response;
+ })
+ .then(ok(res))
+ .catch(badRequest(res));
+}
+
 export const user_list = (req, res) => {
 
   models.User.findAll({
@@ -42,6 +53,7 @@ const router = new Router();
 
 router.put("/", bet_update);
 router.put("/image", save_image);
+router.put("/coordinates", save_coordinates);
 router.get("/", user_list);
 
 export default router;

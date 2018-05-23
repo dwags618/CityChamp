@@ -3,6 +3,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
+import { saveCoordinates } from '../../../services/api/matchdetails';
 
 const styles = theme => ({
   map: {
@@ -27,11 +28,31 @@ class MapForm extends Component {
       activeMarker1: {},
       activeMarker2: {},
       activeMarker3: {},
-      selectedPlace: {}
+      selectedPlace: {},
+      user: {
+        username: localStorage.getItem("username"),
+        latitude: this.props.latitude,
+        longitude: this.props.longitude
+      }
     }
     // binding this to event-handler functions
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClick = this.onMapClick.bind(this);
+    this.save = this.save.bind(this);
+    console.log(this.props.latitude)
+  }
+
+  componentDidMount() {
+    this.save();
+  }
+
+  save() {
+  
+    saveCoordinates(this.state.user)
+      .then(result => result.json())
+      .then(data => {
+      console.log(data)
+      });
   }
 
   onMarkerClick = (props, marker, e) => {

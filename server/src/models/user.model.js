@@ -28,6 +28,14 @@ export default (sequelize, DataTypes) => {
     image: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    longitude: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
+    },
+    latitude: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
     }
   });
 
