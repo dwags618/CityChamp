@@ -16,7 +16,7 @@ export const bet_update = (req, res) => {
 
 export const save_image = (req, res) => {
  
- models.User.update({image: req.body.imagePreviewURL}, {where: {username: req.body.username}})
+ models.User.update({image: req.body.file}, {where: {username: req.body.username}})
  .then((sites) => {
   var response = sites;
   return response;
