@@ -6,6 +6,9 @@ import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import addimage from './blank-profile-picture.png';
 import $ from 'jquery';
+import { getPlayers } from '../../../services/api/matchdetails';
+import SingleUserReportTable from './SingleUserReportTable';
+import { saveImage } from '../../../services/api/matchdetails';
 
 const styles = theme => ({
   hideButton: {
@@ -45,10 +48,39 @@ class ProfilePicture extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      file: '',
       imagePreviewUrl: '',
-      value: ''
+    
+      value: '',
+      users: [],
+      user: {
+        username: '',
+        file:''
+      }
     };
+    
+    this.getAllUsers = this.getAllUsers.bind(this);
+  }
+
+  getAllUsers(key) {
+    getPlayers()
+      .then(result => result.json())
+      .then(data => {
+        this.setState({users: data.users});
+
+      })
+      .catch(err => {
+
+      });
+  }
+
+  componentDidMount() {
+    this.setState({
+      user: {
+        username: localStorage.getItem('username'),
+        file: ''
+      }
+    });
+    this.getAllUsers();
   }
 
   _handleImageChange(e) {
@@ -61,23 +93,33 @@ class ProfilePicture extends Component {
 
     reader.onloadend = () => {
         this.setState({
-            file: file,
-            imagePreviewUrl: reader.result
+            imagePreviewUrl: reader.result,
+            user: {
+            file: file.name,
+            username: localStorage.getItem('username'),
+          }
         });
     }
-
     reader.readAsDataURL(file)
 
+    saveImage(this.state.user)
+      .then(result => result.json())
+      .then(data => {
+      console.log(data)
+      });
   }
 
   render() {
+    console.log(this.state.user.username)
+    console.log(this.state.user.file)
+    console.log(this.state.imagePreviewUrl)
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
       $imagePreview = (<div><img src={imagePreviewUrl} alt={imagePreviewUrl} width={200} height={200} style={{paddingTop:20}} /></div>);
     } 
 
-    const { translate, classes } = this.props;
+    const { classes } = this.props;
 
     return (
      <Paper elevation={4} className={classes.formContainerLeft}>
@@ -96,22 +138,10 @@ class ProfilePicture extends Component {
             </div>
         </center>
         <div style={{paddingLeft:70, paddingTop:20}}>
-        <div/>
-        {translate('profile-picture.first-name')}
-        <div/>
-        Dylan
-        <div style={{paddingTop:20}}/>
-        {translate('profile-picture.last-name')}
-        <div/>
-        Wagner
-        <div style={{paddingTop:20}}/>
-        {translate('profile-picture.email')}
-        <div/>
-        dwags618@gmail.com
-        <div style={{paddingTop:20}}/>
-        {translate('profile-picture.username')}
-        <div/>
-        dwags618
+          <SingleUserReportTable
+            users={this.state.users}
+            username={this.state.user.username}
+          />
         </div>
       </Paper>
     );

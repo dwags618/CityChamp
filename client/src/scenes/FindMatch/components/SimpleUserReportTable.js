@@ -24,7 +24,7 @@ const TableItems = (classes, props, users, minimumBet, maximumBet) => {
     console.log(minimumBet)
     console.log(maximumBet)
 
-    if((n.minimumBet >= minimumBet && n.minimumBet <=maximumBet) || (n.maximumBet >=minimumBet && n.maximumBet <=maximumBet))
+    if((n.minimumBet >= minimumBet && n.minimumBet <=maximumBet) || (n.maximumBet >=minimumBet && n.maximumBet <=maximumBet) || (minimumBet >= n.minimumBet && minimumBet <=n.maximumBet) || (maximumBet >=n.minimumBet && maximumBet <=n.maximumBet))
     output.push(
       <TableRow key={user}>
         <TableCell>{n.name}</TableCell>

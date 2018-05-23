@@ -26,7 +26,6 @@ class SignupPage extends Component {
   constructor(props, context) {
     super(props, context);
 
-    // set the initial component state
     this.state = {
       errors: {
         name: '',

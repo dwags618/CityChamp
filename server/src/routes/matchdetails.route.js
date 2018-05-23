@@ -14,6 +14,17 @@ export const bet_update = (req, res) => {
  .catch(badRequest(res));
 }
 
+export const save_image = (req, res) => {
+ 
+ models.User.update({image: req.body.file}, {where: {username: req.body.username}})
+ .then((sites) => {
+  var response = sites;
+  return response;
+ })
+ .then(ok(res))
+ .catch(badRequest(res));
+}
+
 export const user_list = (req, res) => {
 
   models.User.findAll({
@@ -30,6 +41,7 @@ export const user_list = (req, res) => {
 const router = new Router();
 
 router.put("/", bet_update);
+router.put("/image", save_image);
 router.get("/", user_list);
 
 export default router;

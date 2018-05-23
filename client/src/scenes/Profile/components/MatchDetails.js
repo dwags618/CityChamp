@@ -11,7 +11,7 @@ import Straighten from 'material-ui-icons/Straighten';
 import "./style.css";
 import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import {saveBetAmount} from '../../../services/api/matchdetails';
+import { saveBetAmount } from '../../../services/api/matchdetails';
 import { Button } from 'reactstrap';
 
 const styles = theme => ({
@@ -22,6 +22,7 @@ const styles = theme => ({
   },
   save: {
     marginLeft: 250,
+    marginBottom: 100,
     position: 'absolute'
   }
 })
