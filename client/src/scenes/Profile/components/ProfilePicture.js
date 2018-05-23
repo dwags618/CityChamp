@@ -8,6 +8,7 @@ import addimage from './blank-profile-picture.png';
 import $ from 'jquery';
 import { getPlayers } from '../../../services/api/matchdetails';
 import SingleUserReportTable from './SingleUserReportTable';
+import { saveImage } from '../../../services/api/matchdetails';
 
 const styles = theme => ({
   hideButton: {
@@ -47,13 +48,13 @@ class ProfilePicture extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      file: '',
+      imagePreviewUrl: '',
     
       value: '',
       users: [],
       user: {
         username: '',
-        imagePreviewUrl:''
+        file:''
       }
     };
     
@@ -76,7 +77,7 @@ class ProfilePicture extends Component {
     this.setState({
       user: {
         username: localStorage.getItem('username'),
-        imagePreviewUrl: ''
+        file: ''
       }
     });
     this.getAllUsers();
@@ -92,20 +93,26 @@ class ProfilePicture extends Component {
 
     reader.onloadend = () => {
         this.setState({
-            file: file,
-            user: {
             imagePreviewUrl: reader.result,
+            user: {
+            file: file.name,
             username: localStorage.getItem('username'),
           }
         });
     }
     reader.readAsDataURL(file)
+
+    saveImage(this.state.user)
+      .then(result => result.json())
+      .then(data => {
+      console.log(data)
+      });
   }
 
   render() {
     console.log(this.state.user.username)
-    console.log(this.state.file)
-    console.log(this.state.user.imagePreviewUrl)
+    console.log(this.state.user.file)
+    console.log(this.state.imagePreviewUrl)
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
