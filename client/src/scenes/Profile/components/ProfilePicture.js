@@ -11,6 +11,7 @@ import SingleUserReportTable from './SingleUserReportTable';
 import { saveImage } from '../../../services/api/matchdetails';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import { saveSlideValue } from '../../../services/api/matchdetails';
 
 const styles = theme => ({
   hideButton: {
@@ -95,6 +96,7 @@ class ProfilePicture extends Component {
     this.setState({
       sliderValue,
     });
+
   }
 
   _handleImageChange(e) {

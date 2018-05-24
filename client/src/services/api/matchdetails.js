@@ -24,6 +24,14 @@ export const saveCoordinates = (params) => {
   });
 }
 
+export const saveSliderValue = (params) => {
+  return fetch('/api/matchdetails/slidervalue', {
+    method: 'PUT',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(params)
+  });
+}
+
 export const getPlayers = () => {
   return fetch('/api/matchdetails', {
     headers: {
