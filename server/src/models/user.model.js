@@ -18,11 +18,11 @@ export default (sequelize, DataTypes) => {
       allowNull: false
     },
     minimumBet: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     maximumBet: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     image: {
@@ -35,6 +35,10 @@ export default (sequelize, DataTypes) => {
     },
     latitude: {
       type: DataTypes.DECIMAL,
+      allowNull: false
+    },
+    maximumDistance: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   });

@@ -22,7 +22,8 @@ module.exports = new PassportLocalStrategy({
     maximumBet: '',
     image: '',
     latitude: '',
-    longitude: ''
+    longitude: '',
+    maximumDistance: ''
   };
 
   models.User.findOne({
