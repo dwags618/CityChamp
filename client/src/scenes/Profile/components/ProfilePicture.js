@@ -9,6 +9,8 @@ import $ from 'jquery';
 import { getPlayers } from '../../../services/api/matchdetails';
 import SingleUserReportTable from './SingleUserReportTable';
 import { saveImage } from '../../../services/api/matchdetails';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 const styles = theme => ({
   hideButton: {
@@ -41,6 +43,11 @@ const styles = theme => ({
     height: 600,
     width: 350
   },
+  slider: {
+    position: 'relative',
+    width: 200, 
+    paddingTop: 10
+  }
 })
 
 class ProfilePicture extends Component {
@@ -49,7 +56,7 @@ class ProfilePicture extends Component {
     super(props);
     this.state = {
       imagePreviewUrl: '',
-    
+      sliderValue: 1,
       value: '',
       users: [],
       user: {
@@ -81,6 +88,13 @@ class ProfilePicture extends Component {
       }
     });
     this.getAllUsers();
+  }
+
+  onSliderChange = (sliderValue) => {
+    console.log(sliderValue);
+    this.setState({
+      sliderValue,
+    });
   }
 
   _handleImageChange(e) {
@@ -142,6 +156,15 @@ class ProfilePicture extends Component {
             users={this.state.users}
             username={this.state.user.username}
           />
+        </div>
+        <div>
+        <center>
+        <div style={{paddingTop:50}}>
+        Maximum Distance
+        </div>
+          <Slider step={1} value={this.state.sliderValue} defaultValue={5} onChange={this.onSliderChange} max={20} className={classes.slider}/>
+          {this.state.sliderValue} mi.
+          </center>
         </div>
       </Paper>
     );
