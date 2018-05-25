@@ -11,7 +11,7 @@ import SingleUserReportTable from './SingleUserReportTable';
 import { saveImage } from '../../../services/api/matchdetails';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { saveSlideValue } from '../../../services/api/matchdetails';
+import { saveSliderValue } from '../../../services/api/matchdetails';
 
 const styles = theme => ({
   hideButton: {
@@ -57,12 +57,12 @@ class ProfilePicture extends Component {
     super(props);
     this.state = {
       imagePreviewUrl: '',
-      sliderValue: 1,
       value: '',
       users: [],
       user: {
         username: '',
-        file:''
+        file:'',
+        sliderValue: 1,
       }
     };
     
@@ -82,21 +82,25 @@ class ProfilePicture extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      user: {
-        username: localStorage.getItem('username'),
-        file: ''
-      }
-    });
     this.getAllUsers();
+  }
+
+  componentDidUpdate() {
+    saveSliderValue(this.state.user)
+      .then(result => result.json())
+      .then(data => {
+      console.log(data)
+      });
   }
 
   onSliderChange = (sliderValue) => {
     console.log(sliderValue);
     this.setState({
-      sliderValue,
+      user:{
+          sliderValue: sliderValue,
+          username: localStorage.getItem('username')
+        }
     });
-
   }
 
   _handleImageChange(e) {
@@ -164,8 +168,8 @@ class ProfilePicture extends Component {
         <div style={{paddingTop:50}}>
         Maximum Distance
         </div>
-          <Slider step={1} value={this.state.sliderValue} defaultValue={5} onChange={this.onSliderChange} max={20} className={classes.slider}/>
-          {this.state.sliderValue} mi.
+          <Slider step={1} value={this.state.user.sliderValue} defaultValue={5} onChange={this.onSliderChange} max={20} className={classes.slider}/>
+          {this.state.user.sliderValue} mi.
           </center>
         </div>
       </Paper>

@@ -38,7 +38,7 @@ export const save_coordinates = (req, res) => {
 
 export const save_slidervalue = (req, res) => {
  
- models.User.update({maximumDistance: req.body.maximumDistance}, {where: {username: req.body.username}})
+ models.User.update({maximumDistance: req.body.sliderValue}, {where: {username: req.body.username}})
  .then((sites) => {
   var response = sites;
   return response;
