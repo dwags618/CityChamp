@@ -23,7 +23,7 @@ module.exports = new PassportLocalStrategy({
     image: '',
     latitude: '',
     longitude: '',
-    maximumDistance: ''
+    maximumDistance: 1
   };
 
   models.User.findOne({
