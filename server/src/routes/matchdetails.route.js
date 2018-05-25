@@ -60,6 +60,21 @@ export const user_list = (req, res) => {
     .catch(badRequest(res));
 }
 
+export const maximum_distance = (req, res) => {
+
+  models.User.findOne({
+  where: {username: 'dwags618'},
+  attributes: ['name', 'username', 'maximumDistance']
+})
+    .then((users) => {
+      var response = {};
+      response['users'] = users;
+      return response;
+    })
+    .then(ok(res))
+    .catch(badRequest(res));
+}
+
 const router = new Router();
 
 router.put("/", bet_update);
@@ -67,5 +82,6 @@ router.put("/image", save_image);
 router.put("/coordinates", save_coordinates);
 router.put("/slidervalue", save_slidervalue);
 router.get("/", user_list);
+router.get("/maximumdistance", maximum_distance);
 
 export default router;
