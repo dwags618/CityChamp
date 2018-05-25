@@ -38,7 +38,7 @@ export const save_coordinates = (req, res) => {
 
 export const save_slidervalue = (req, res) => {
  
- models.User.update({maximumDistance: req.body.sliderValue}, {where: {username: req.body.username}})
+ models.User.update({maximumDistance: req.body.maximumDistance}, {where: {username: req.body.username}})
  .then((sites) => {
   var response = sites;
   return response;
@@ -60,7 +60,7 @@ export const user_list = (req, res) => {
     .catch(badRequest(res));
 }
 
-export const maximum_distance = (req, res) => {
+export const user_details = (req, res) => {
 
   models.User.findOne({
   where: {username: 'dwags618'},
@@ -82,6 +82,6 @@ router.put("/image", save_image);
 router.put("/coordinates", save_coordinates);
 router.put("/slidervalue", save_slidervalue);
 router.get("/", user_list);
-router.get("/maximumdistance", maximum_distance);
+router.get("/userdetails", user_details);
 
 export default router;

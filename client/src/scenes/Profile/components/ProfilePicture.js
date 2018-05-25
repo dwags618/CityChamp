@@ -10,7 +10,7 @@ import { saveImage } from '../../../services/api/matchdetails';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { saveSliderValue } from '../../../services/api/matchdetails';
-import { getMaximumDistance } from '../../../services/api/matchdetails';
+import { getUserDetails } from '../../../services/api/matchdetails';
 
 const styles = theme => ({
   hideButton: {
@@ -66,11 +66,11 @@ class ProfilePicture extends Component {
       }
     };
     
-    this.getMaximumDistance = this.getMaximumDistance.bind(this);
+    this.getUserDetails = this.getUserDetails.bind(this);
   }
 
-  getMaximumDistance(key) {
-    getMaximumDistance(this.state.user)
+  getUserDetails(key) {
+    getUserDetails(this.state.user)
       .then(result => result.json())
       .then(data => {
        this.setState({
@@ -96,7 +96,7 @@ class ProfilePicture extends Component {
   }
 
   componentDidMount() {
-    this.getMaximumDistance();
+    this.getUserDetails();
   }
 
   componentDidUpdate() {
