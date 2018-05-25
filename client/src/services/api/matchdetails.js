@@ -40,6 +40,14 @@ export const getPlayers = () => {
   });
 }
 
+export const getMaximumDistance = () => {
+  return fetch('/api/matchdetails/maximumdistance', {
+    headers: {
+      'Authorization': `bearer ${Auth.getToken()}`
+    },
+  });
+}
+
 
 
 
