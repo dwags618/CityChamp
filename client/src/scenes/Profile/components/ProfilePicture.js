@@ -6,12 +6,11 @@ import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import addimage from './blank-profile-picture.png';
 import $ from 'jquery';
-import { getPlayers } from '../../../services/api/matchdetails';
-import SingleUserReportTable from './SingleUserReportTable';
 import { saveImage } from '../../../services/api/matchdetails';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { saveSliderValue } from '../../../services/api/matchdetails';
+import { getMaximumDistance } from '../../../services/api/matchdetails';
 
 const styles = theme => ({
   hideButton: {
@@ -60,20 +59,27 @@ class ProfilePicture extends Component {
       value: '',
       users: [],
       user: {
-        username: '',
+        username: localStorage.getItem('username'),
         file:'',
-        sliderValue: 1,
+        maximumDistance: 1,
+        name: ''
       }
     };
     
-    this.getAllUsers = this.getAllUsers.bind(this);
+    this.getMaximumDistance = this.getMaximumDistance.bind(this);
   }
 
-  getAllUsers(key) {
-    getPlayers()
+  getMaximumDistance(key) {
+    getMaximumDistance(this.state.user)
       .then(result => result.json())
       .then(data => {
-        this.setState({users: data.users});
+       this.setState({
+        user: {
+          maximumDistance: data.users.maximumDistance,
+          name: data.users.name,
+          username: localStorage.getItem('username')
+        }
+        })
 
       })
       .catch(err => {
@@ -81,11 +87,7 @@ class ProfilePicture extends Component {
       });
   }
 
-  componentDidMount() {
-    this.getAllUsers();
-  }
-
-  componentDidUpdate() {
+  saveSliderValue() {
     saveSliderValue(this.state.user)
       .then(result => result.json())
       .then(data => {
@@ -93,11 +95,20 @@ class ProfilePicture extends Component {
       });
   }
 
+  componentDidMount() {
+    this.getMaximumDistance();
+  }
+
+  componentDidUpdate() {
+    this.saveSliderValue();
+  }
+
   onSliderChange = (sliderValue) => {
     console.log(sliderValue);
     this.setState({
       user:{
-          sliderValue: sliderValue,
+          name: this.state.user.name,
+          maximumDistance: sliderValue,
           username: localStorage.getItem('username')
         }
     });
@@ -130,9 +141,6 @@ class ProfilePicture extends Component {
   }
 
   render() {
-    console.log(this.state.user.username)
-    console.log(this.state.user.file)
-    console.log(this.state.imagePreviewUrl)
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
@@ -158,18 +166,17 @@ class ProfilePicture extends Component {
             </div>
         </center>
         <div style={{paddingLeft:70, paddingTop:20}}>
-          <SingleUserReportTable
-            users={this.state.users}
-            username={this.state.user.username}
-          />
+          {this.state.user.name}
+          <div/>
+          {this.state.user.username}
         </div>
         <div>
         <center>
         <div style={{paddingTop:50}}>
         Maximum Distance
         </div>
-          <Slider step={1} value={this.state.user.sliderValue} defaultValue={5} onChange={this.onSliderChange} max={20} className={classes.slider}/>
-          {this.state.user.sliderValue} mi.
+          <Slider step={1} value={this.state.user.maximumDistance} defaultValue={5} onChange={this.onSliderChange} max={20} className={classes.slider}/>
+          {this.state.user.maximumDistance} mi.
           </center>
         </div>
       </Paper>
