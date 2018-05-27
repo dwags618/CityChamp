@@ -8,13 +8,16 @@ import LoginForm from './components/LoginForm';
 import MyCityChampLogo from '../../images/cc_homepage_header.jpg';
 import { loginUser } from '../../services/api/auth';
 import SignUpButton from './components/SignUpButton';
+import ChampIcon from '../../images/cc_homepage_icon_champ.jpg';
+import GameIcon from '../../images/cc_homepage_icon_game.jpg'
+import SearchIcon from '../../images/cc_homepage_icon_search.jpg'
 
 const styles = theme => ({
   container: {
     position: 'relative',
     width: '100%',
     height: 2000,
-    color: 'white'
+    background: '#ffffff'
   },
   logo: {
     width: '100%'
@@ -68,7 +71,10 @@ const styles = theme => ({
     top: 30,
     right: 150,
     color: 'white'
-  }
+  },
+  searchicon: {
+    position: 'relative'
+  }  
 })
 
 class LoginPage extends Component {
@@ -150,6 +156,7 @@ class LoginPage extends Component {
           <div/>
           <h1 className={classes.secondheader}>Find Matches. Take it to the net.</h1>
           <div className={classes.button}><SignUpButton/></div>
+          <img className={classes.searchicon} src={SearchIcon} alt="Search Icon"/>
       </div>
       );
     }
