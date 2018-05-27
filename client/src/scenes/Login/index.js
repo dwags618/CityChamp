@@ -7,12 +7,14 @@ import Auth from '../../services/auth';
 import LoginForm from './components/LoginForm';
 import MyCityChampLogo from '../../images/cc_homepage_header.jpg';
 import { loginUser } from '../../services/api/auth';
+import SignUpButton from './components/SignUpButton';
 
 const styles = theme => ({
   container: {
     position: 'relative',
-    width: '100%'
-
+    width: '100%',
+    height: 2000,
+    color: 'white'
   },
   logo: {
     width: '100%'
@@ -24,27 +26,49 @@ const styles = theme => ({
   splash: {
     margin: '0 auto'
   },
-  centered: {
+  firstheader: {
     position: 'absolute',
-   padding: 100,
-   width: '100%',
-   textAlign: 'center',
-   top: 100,
-   color: 'white',
-   fontSize: '150px'
-
-},
-centered1: {
+    padding: 100,
+    width: '100%',
+    textAlign: 'center',
+    top: 100,
+    color: 'white',
+    fontSize: '150px'
+  },
+  secondheader: {
     position: 'absolute',
-   padding: 100,
-   width: '100%',
-   textAlign: 'center',
-   top: 320,
-   color: 'white'
-}
-
-
-
+    padding: 100,
+    width: '100%',
+    textAlign: 'center',
+    top: 320,
+    color: 'white'
+  },
+  button: {
+    position: 'absolute',
+    padding: 100,
+    width: '100%',
+    textAlign: 'center',
+    top: 350,
+    color: 'white'
+  },
+  firstlink: {
+    position: 'absolute',
+    padding: 0,
+    width: '100%',
+    textAlign: 'right',
+    top: 30,
+    right: 30,
+    color: 'white'
+  },
+  secondlink: {
+    position: 'absolute',
+    padding: 0,
+    width: '100%',
+    textAlign: 'right',
+    top: 30,
+    right: 150,
+    color: 'white'
+  }
 })
 
 class LoginPage extends Component {
@@ -120,9 +144,12 @@ class LoginPage extends Component {
       return (
         <div className={classes.container}>
           <img className={classes.logo} src={MyCityChampLogo} alt="MyCityChamp Logo" />
-          <h1 className={classes.centered}>City Champ</h1>
+          <h4 className={classes.firstlink}>Sign Up</h4>
+          <h4 className={classes.secondlink}>Login</h4>
+          <h1 className={classes.firstheader}>City Champ</h1>
           <div/>
-          <h1 className={classes.centered1}>Find Matches. Take it to the net.</h1>
+          <h1 className={classes.secondheader}>Find Matches. Take it to the net.</h1>
+          <div className={classes.button}><SignUpButton/></div>
       </div>
       );
     }
