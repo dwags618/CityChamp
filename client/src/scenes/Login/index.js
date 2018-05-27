@@ -5,20 +5,17 @@ import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import Auth from '../../services/auth';
 import LoginForm from './components/LoginForm';
-import MyCityChampLogo from '../../images/MCC_logo.png';
+import MyCityChampLogo from '../../images/cc_homepage_header.jpg';
 import { loginUser } from '../../services/api/auth';
 
 const styles = theme => ({
   container: {
-    background:'linear-gradient(0deg, #1f5592 0%,#286ba1 37%,#3a94c0 68%,#51c4e1 100%)',
-    width: '100%',
-    height:1300
+    position: 'relative',
+    width: '100%'
 
   },
   logo: {
-    display: 'block',
-    margin: '0 auto',
-    paddingTop: 150
+    width: '100%'
   },
   gifcontainer: {
     display: 'flex',
@@ -26,7 +23,28 @@ const styles = theme => ({
   },
   splash: {
     margin: '0 auto'
-  }
+  },
+  centered: {
+    position: 'absolute',
+   padding: 100,
+   width: '100%',
+   textAlign: 'center',
+   top: 100,
+   color: 'white',
+   fontSize: '150px'
+
+},
+centered1: {
+    position: 'absolute',
+   padding: 100,
+   width: '100%',
+   textAlign: 'center',
+   top: 320,
+   color: 'white'
+}
+
+
+
 })
 
 class LoginPage extends Component {
@@ -101,15 +119,10 @@ class LoginPage extends Component {
 
       return (
         <div className={classes.container}>
-          <img className={classes.logo} width="450" src={MyCityChampLogo} alt="MyCityChamp Logo" />
-          <LoginForm
-            onSubmit={this.login}
-            onChange={this.changeUser}
-            user={this.state.user}
-            translate={translate}
-            errors={this.state.errors}
-            message={this.state.message}
-          />
+          <img className={classes.logo} src={MyCityChampLogo} alt="MyCityChamp Logo" />
+          <h1 className={classes.centered}>City Champ</h1>
+          <div/>
+          <h1 className={classes.centered1}>Find Matches. Take it to the net.</h1>
       </div>
       );
     }

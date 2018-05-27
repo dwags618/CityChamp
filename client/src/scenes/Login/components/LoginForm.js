@@ -80,11 +80,6 @@ let LoginForm = (props) => {
             onClick={onSubmit}
             buttonText={translate('buttons.signin')}
           />
-          <FacebookLogin
-    appId="1088597931155576"
-    autoLoad={true}
-    fields="name,email,picture"
-    callback={responseFacebook} />
     </div>
       </div>
       </form>
