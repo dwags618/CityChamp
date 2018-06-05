@@ -63,7 +63,7 @@ export const user_list = (req, res) => {
 export const user_details = (req, res) => {
 
   models.User.findOne({
-  where: {username: 'dwags618'},
+  where: {username: req.body.username},
   attributes: ['name', 'username', 'maximumDistance']
 })
     .then((users) => {

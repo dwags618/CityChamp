@@ -70,6 +70,7 @@ class ProfilePicture extends Component {
   }
 
   getUserDetails(key) {
+    console.log(this.state.user)
     getUserDetails(this.state.user)
       .then(result => result.json())
       .then(data => {
@@ -156,7 +157,7 @@ class ProfilePicture extends Component {
             <div className="imgPreview" id="imgPreview">
               {$imagePreview}
             </div>
-            <img width="200" height="200"  style={{paddingTop:20}} alt={addimage} src={addimage} id="addimage" class="addimage"    />
+            <img width="200" height="200"  style={{paddingTop:20}} alt={addimage} src={addimage} id="addimage"    />
               <div>
                 <label for="file-upload" className={classes.customfileupload}>
                   Upload Image
