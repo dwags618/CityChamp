@@ -19,11 +19,13 @@ export default (sequelize, DataTypes) => {
     },
     minimumBet: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 20
     },
     maximumBet: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 40
     },
     image: {
       type: DataTypes.STRING,

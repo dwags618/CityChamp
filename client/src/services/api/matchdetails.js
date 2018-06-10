@@ -51,6 +51,17 @@ export const getUserDetails = (params) => {
   });
 }
 
+export const getBetAmount = (params) => {
+  return fetch('/api/matchdetails/betamount', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `bearer ${Auth.getToken()}`
+    },
+    body: JSON.stringify(params)
+  });
+}
+
 
 
 

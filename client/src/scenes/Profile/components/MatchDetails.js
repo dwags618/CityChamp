@@ -13,6 +13,7 @@ import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { saveBetAmount } from '../../../services/api/matchdetails';
 import { Button } from 'reactstrap';
+import { getBetAmount } from '../../../services/api/matchdetails';
 
 const styles = theme => ({
   formContainerRightTop: {
@@ -58,6 +59,27 @@ class ProfilePicture extends Component {
       .then(data => {
       console.log(data)
       });
+  }
+
+  getBetAmount(key) {
+    console.log(this.state.user)
+    getBetAmount(this.state.user)
+      .then(result => result.json())
+      .then(data => {
+       this.setState({
+        user: {
+          rangeValue: [data.users.minimumBet, data.users.maximumBet]
+        }
+        })
+
+      })
+      .catch(err => {
+
+      });
+  }
+
+  componentDidMount() {
+    this.getBetAmount();
   }
 
   render() {

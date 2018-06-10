@@ -61,10 +61,23 @@ export const user_list = (req, res) => {
 }
 
 export const user_details = (req, res) => {
-console.log(req.body)
   models.User.findOne({
   where: {username: req.body.username},
   attributes: ['name', 'username', 'maximumDistance']
+})
+    .then((users) => {
+      var response = {};
+      response['users'] = users;
+      return response;
+    })
+    .then(ok(res))
+    .catch(badRequest(res));
+}
+
+export const bet_amount = (req, res) => {
+  models.User.findOne({
+  where: {username: req.body.username},
+  attributes: ['minimumBet', 'maximumBet']
 })
     .then((users) => {
       var response = {};
@@ -83,5 +96,6 @@ router.put("/coordinates", save_coordinates);
 router.put("/slidervalue", save_slidervalue);
 router.get("/", user_list);
 router.post("/userdetails", user_details);
+router.post("/betamount", bet_amount);
 
 export default router;
