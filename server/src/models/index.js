@@ -22,7 +22,6 @@ sequelize
 var db = {};
 
 db['User'] = sequelize.import(path.join(__dirname, 'user.model.js'));
-db['Maps'] = sequelize.import(path.join(__dirname, 'maps.model.js'));
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
