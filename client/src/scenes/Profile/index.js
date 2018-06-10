@@ -56,13 +56,11 @@ class MapsPage extends Component {
     this.setState({
       current_date: new_date
     });
-
     this.updateTimes(new_date, view);
   }
 
   render() {
   const { translate, classes } = this.props;
-
     return (
       <div className={classes.pageContainer}>
         <div className={classes.contentContainer}>

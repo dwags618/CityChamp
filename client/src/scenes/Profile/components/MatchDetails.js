@@ -53,7 +53,6 @@ class ProfilePicture extends Component {
   };
 
   save() {
-  
     saveBetAmount(this.state.user)
       .then(result => result.json())
       .then(data => {
@@ -62,19 +61,16 @@ class ProfilePicture extends Component {
   }
 
   getBetAmount(key) {
-    console.log(this.state.user)
     getBetAmount(this.state.user)
       .then(result => result.json())
       .then(data => {
-       this.setState({
-        user: {
-          rangeValue: [data.users.minimumBet, data.users.maximumBet]
-        }
+        this.setState({
+          user: {
+            rangeValue: [data.users.minimumBet, data.users.maximumBet]
+          }
         })
-
       })
       .catch(err => {
-
       });
   }
 
@@ -83,11 +79,8 @@ class ProfilePicture extends Component {
   }
 
   render() {
-
     const { translate, classes } = this.props;
-
     return (
-
      <Paper elevation={4} className={classes.formContainerRightTop}>     
       <table style={{width:350, height: 150}}>
         <tr>
@@ -108,7 +101,6 @@ class ProfilePicture extends Component {
           Weight
           <div/>
           </td>
-
         </tr>
         <tr>
           <td><Casino class="material-icons-straighten" style={{marginTop:30}}/></td>
@@ -123,7 +115,6 @@ class ProfilePicture extends Component {
           </td>
         </tr>
       </table>
-      
     </Paper>
     );
   }

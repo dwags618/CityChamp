@@ -65,26 +65,23 @@ class ProfilePicture extends Component {
         name: ''
       }
     };
-    
+
     this.getUserDetails = this.getUserDetails.bind(this);
   }
 
   getUserDetails(key) {
-    console.log(this.state.user)
     getUserDetails(this.state.user)
       .then(result => result.json())
       .then(data => {
-       this.setState({
-        user: {
-          maximumDistance: data.users.maximumDistance,
-          name: data.users.name,
-          username: localStorage.getItem('username')
-        }
+        this.setState({
+          user: {
+            maximumDistance: data.users.maximumDistance,
+            name: data.users.name,
+            username: localStorage.getItem('username')
+          }
         })
-
       })
       .catch(err => {
-
       });
   }
 
@@ -92,7 +89,6 @@ class ProfilePicture extends Component {
     saveSliderValue(this.state.user)
       .then(result => result.json())
       .then(data => {
-      console.log(data)
       });
   }
 
@@ -105,7 +101,6 @@ class ProfilePicture extends Component {
   }
 
   onSliderChange = (sliderValue) => {
-    console.log(sliderValue);
     this.setState({
       user:{
           name: this.state.user.name,
@@ -147,9 +142,7 @@ class ProfilePicture extends Component {
     if (imagePreviewUrl) {
       $imagePreview = (<div><img src={imagePreviewUrl} alt={imagePreviewUrl} width={200} height={200} style={{paddingTop:20}} /></div>);
     } 
-
     const { classes } = this.props;
-
     return (
      <Paper elevation={4} className={classes.formContainerLeft}>
         <center>
