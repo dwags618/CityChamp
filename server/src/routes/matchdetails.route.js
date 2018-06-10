@@ -61,7 +61,7 @@ export const user_list = (req, res) => {
 }
 
 export const user_details = (req, res) => {
-
+console.log(req.body)
   models.User.findOne({
   where: {username: req.body.username},
   attributes: ['name', 'username', 'maximumDistance']
@@ -82,6 +82,6 @@ router.put("/image", save_image);
 router.put("/coordinates", save_coordinates);
 router.put("/slidervalue", save_slidervalue);
 router.get("/", user_list);
-router.get("/userdetails", user_details);
+router.post("/userdetails", user_details);
 
 export default router;

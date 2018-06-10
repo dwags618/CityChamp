@@ -42,15 +42,14 @@ export const getPlayers = () => {
 
 export const getUserDetails = (params) => {
   return fetch('/api/matchdetails/userdetails', {
+    method: 'POST',
     headers: {
-      'Authorization': `bearer ${Auth.getToken()}`,
-      'Content-Type':'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `bearer ${Auth.getToken()}`
     },
-    method: 'GET',
     body: JSON.stringify(params)
   });
 }
-
 
 
 
